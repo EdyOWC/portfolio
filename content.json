@@ -126,7 +126,7 @@
       ],
       "featured": true,
       "description": "A 360° virtual tour demo shot inside Dizengoff Center, Tel Aviv — 25 panoramas from the entrance to Lev Cinema.",
-      "cover": "assets/img/dizengoff-cover.jpg",
+      "cover": "assets/img/dizengoff-cover.png",
       "blocks": [
         {
           "type": "text",
@@ -309,7 +309,9 @@
           "href": "https://www.taufilmfest.com/competition/",
           "label": "To the exhibition"
         }
-      ]
+      ],
+      "coverFit": "contain",
+      "coverBg": "#3B0A17"
     },
     {
       "slug": "one-world-city",

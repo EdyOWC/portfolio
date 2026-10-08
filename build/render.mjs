@@ -60,11 +60,11 @@ function tile(p, { tall = false } = {}) {
      grid is never full of grey rectangles. */
   const typed = `<span class="tile__type"${he}><span class="n">${esc((p.tags || [])[0] || p.year || '')}</span><h3>${esc(p.title)}</h3></span>`;
   const photo = (p.hasCover !== false && p.cover)
-    ? `<img src="${u(p.cover)}" alt="" loading="lazy" onerror="this.remove()">
+    ? `<img src="${u(p.cover)}" alt="" loading="lazy" onerror="this.remove()"${p.coverFit === 'contain' ? ' class="fit"' : ''}>
        <span class="tile__over"><h3${he}>${esc(p.title)}</h3></span>`
     : '';
   return `<a class="tile${tall ? ' tile--tall' : ''}" href="${u(p.slug)}"${(p.tags || []).length ? ` data-tags="${esc(p.tags.join('|'))}"` : ''}>
-  <span class="tile__frame" style="--tint:${tintFor(p.slug)}">
+  <span class="tile__frame" style="--tint:${p.coverBg || tintFor(p.slug)}">
     ${playsIn(p) ? '<span class="play"><span class="dot"></span>plays here</span>' : ''}
     ${typed}${photo}
   </span>
