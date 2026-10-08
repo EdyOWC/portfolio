@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync, mkdirSync, cpSync, rmSync, existsSync, readdirSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
-import { buildAll, hydrate } from './render.mjs';
+import { buildAll, hydrate, setBase } from './render.mjs';
 
 const root = resolve(process.argv[2] || '.');
 const dist = join(root, 'dist');
@@ -16,6 +16,10 @@ if (existsSync(textDir)) {
   }
 }
 hydrate(data, texts);
+
+// BASE_PATH comes from the Pages workflow: '' on a custom domain,
+// '/portfolio' on the github.io project URL.
+setBase(process.env.BASE_PATH || data.site.basePath || '');
 
 if (existsSync(dist)) rmSync(dist, { recursive: true });
 mkdirSync(dist, { recursive: true });

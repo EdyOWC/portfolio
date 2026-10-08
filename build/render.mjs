@@ -10,6 +10,12 @@ const FONTS = 'https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200
    for leaving a hosted portfolio builder: XR, camera, gyroscope, fullscreen. */
 const IFRAME_ALLOW = 'accelerometer; autoplay; camera; clipboard-write; encrypted-media; fullscreen; gyroscope; magnetometer; microphone; picture-in-picture; xr-spatial-tracking';
 
+/* Every internal link goes through u(). BASE is '' on a custom domain and
+   '/portfolio' on the github.io project URL, so one build serves both. */
+let BASE = '';
+export function setBase(b) { BASE = (b || '').replace(/\/$/, ''); }
+export const u = (path = '/') => BASE + (path.startsWith('/') ? path : '/' + path);
+
 export const esc = (s = '') =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
@@ -17,7 +23,7 @@ export const esc = (s = '') =>
 /* Markdown-lite for body copy: **bold**, *italic*, [text](href) */
 function inline(s = '') {
   return esc(s)
-    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, t, h) => `<a href="${h}"${/^https?:/.test(h) ? ' target="_blank" rel="noopener"' : ''}>${t}</a>`)
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, t, h) => `<a href="${/^https?:|^mailto:|^#/.test(h) ? h : u(h)}"${/^https?:/.test(h) ? ' target="_blank" rel="noopener"' : ''}>${t}</a>`)
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/(^|\s)\*([^*\n]+)\*/g, '$1<em>$2</em>');
 }
@@ -54,10 +60,10 @@ function tile(p, { tall = false } = {}) {
      grid is never full of grey rectangles. */
   const typed = `<span class="tile__type"${he}><span class="n">${esc((p.tags || [])[0] || p.year || '')}</span><h3>${esc(p.title)}</h3></span>`;
   const photo = p.cover
-    ? `<img src="/${p.cover.replace(/^\//, '')}" alt="" loading="lazy" onerror="this.remove()">
+    ? `<img src="${u(p.cover)}" alt="" loading="lazy" onerror="this.remove()">
        <span class="tile__over"><h3${he}>${esc(p.title)}</h3></span>`
     : '';
-  return `<a class="tile${tall ? ' tile--tall' : ''}" href="/${p.slug}"${(p.tags || []).length ? ` data-tags="${esc(p.tags.join('|'))}"` : ''}>
+  return `<a class="tile${tall ? ' tile--tall' : ''}" href="${u(p.slug)}"${(p.tags || []).length ? ` data-tags="${esc(p.tags.join('|'))}"` : ''}>
   <span class="tile__frame" style="--tint:${tintFor(p.slug)}">
     ${playsIn(p) ? '<span class="play"><span class="dot"></span>plays here</span>' : ''}
     ${typed}${photo}
@@ -131,17 +137,17 @@ function block(b, page) {
         `<div><span class="k">${inline(k)}</span><span class="v">${inline(v)}</span></div>`).join('')}</div>`;
 
     case 'image':
-      return `<figure class="shot"><img src="/${b.src.replace(/^\//, '')}" alt="${esc(b.alt || '')}" loading="lazy" onerror="this.closest('figure').remove()">${
+      return `<figure class="shot"><img src="${u(b.src)}" alt="${esc(b.alt || '')}" loading="lazy" onerror="this.closest('figure').remove()">${
         b.caption ? `<figcaption${isHe(b.caption) ? ' dir="rtl"' : ''}>${inline(b.caption)}</figcaption>` : ''}</figure>`;
 
     case 'gallery':
       return `<div class="gallery" data-cols="${b.columns || 2}">${b.images.map(im =>
-        `<img src="/${im.src.replace(/^\//, '')}" alt="${esc(im.alt || '')}" loading="lazy" onerror="this.remove()">`).join('')}</div>`;
+        `<img src="${u(im.src)}" alt="${esc(im.alt || '')}" loading="lazy" onerror="this.remove()">`).join('')}</div>`;
 
     case 'video':
       return `<div class="gate"><div class="gate__frame">
-        <div class="gate__stage"><video controls preload="metadata"${b.poster ? ` poster="/${b.poster.replace(/^\//, '')}"` : ''}>
-          <source src="/${b.src.replace(/^\//, '')}" type="video/mp4"></video></div></div>${
+        <div class="gate__stage"><video controls preload="metadata"${b.poster ? ` poster="${u(b.poster)}"` : ''}>
+          <source src="${u(b.src)}" type="video/mp4"></video></div></div>${
         b.caption ? `<p class="gate__cap">${inline(b.caption)}</p>` : ''}</div>`;
 
     case 'youtube':
@@ -157,7 +163,7 @@ function block(b, page) {
        HTML file in static/widgets/, framed so its CSS cannot leak. */
     case 'widget':
       return `<figure class="widget">
-  <iframe src="/widgets/${esc(b.name)}.html" title="${esc(b.caption || b.name)}" loading="lazy"
+  <iframe src="${u('widgets/' + b.name + '.html')}" title="${esc(b.caption || b.name)}" loading="lazy"
           data-autosize scrolling="no"></iframe>
   ${b.caption ? `<figcaption${isHe(b.caption) ? ' dir="rtl"' : ''}>${inline(b.caption)}</figcaption>` : ''}
 </figure>`;
@@ -257,9 +263,9 @@ function head(data, { title, description, path, image, lang }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${FONTS}">
-<link rel="stylesheet" href="/assets/site.css">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<script defer src="/assets/site.js"></script>
+<link rel="stylesheet" href="${u('assets/site.css')}">
+<link rel="icon" href="${u('assets/favicon.svg')}" type="image/svg+xml">
+<script defer src="${u('assets/site.js')}"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>`;
@@ -268,9 +274,9 @@ function head(data, { title, description, path, image, lang }) {
 function mast(data, current) {
   const s = data.site;
   return `<header class="mast"><div class="mast__in">
-  <a class="mast__name" href="/">${esc(s.name)}</a>
+  <a class="mast__name" href="${u('/')}">${esc(s.name)}</a>
   <nav class="mast__nav" aria-label="Main">
-    ${s.nav.map(n => `<a href="${n.href}"${current === n.href ? ' aria-current="page"' : ''}>${esc(n.label)}</a>`).join('\n    ')}
+    ${s.nav.map(n => `<a href="${u(n.href)}"${current === n.href ? ' aria-current="page"' : ''}>${esc(n.label)}</a>`).join('\n    ')}
   </nav>
 </div></header>`;
 }
@@ -308,7 +314,7 @@ function related(data, page) {
 const byYear = (a, b) => String(b.year || '').localeCompare(String(a.year || ''));
 
 function entryFor(data, p) {
-  return `<a class="entry" href="/${p.slug}"${p.lang ? ` data-lang="${p.lang}"` : ''}>
+  return `<a class="entry" href="${u(p.slug)}"${p.lang ? ` data-lang="${p.lang}"` : ''}>
   <span class="entry__year">${esc(p.year || '')}</span>
   <span>
     <h3 class="entry__title">${esc(p.title)}</h3>
@@ -329,7 +335,7 @@ function facts(data, page) {
   const section = data.sections.find(x => x.id === page.section);
   const rows = [];
   if (page.year) rows.push(['Year', esc(page.year)]);
-  if (section) rows.push(['Section', `<a href="/${section.slug}" style="color:inherit">${esc(section.title)}</a>`]);
+  if (section) rows.push(['Section', `<a href="${u(section.slug)}" style="color:inherit">${esc(section.title)}</a>`]);
   if (page.tags && page.tags.length) rows.push(['Subject', page.tags.map(esc).join(', ')]);
   const n = mediaCount(page);
   if (n) rows.push(['On this page', n === 1 ? 'One piece plays here' : `${n} pieces play here`]);
@@ -344,7 +350,7 @@ const WIDE = new Set(['embed', 'html', 'youtube', 'vimeo', 'video', 'gallery', '
 export function renderPage(data, page) {
   const s = data.site;
   const section = data.sections.find(x => x.id === page.section);
-  const navHref = section ? '/' + section.slug : '/';
+  const navHref = section ? u(section.slug) : u('/');
 
   /* Lead with the work. The first thing that plays is pulled above the title
      and given the full width of the page; the rest stays in reading order. */
@@ -361,7 +367,7 @@ export function renderPage(data, page) {
       image: page.cover,
       lang: page.lang || s.lang
     }),
-    mast(data, navHref),
+    mast(data, section ? '/' + section.slug : '/'),
     `<main id="main">
   ${opener ? `<section class="opener"><div class="wrap">${block(opener, page)}</div></section>` : ''}
   <div class="wrap">
@@ -433,18 +439,18 @@ export function renderHome(data) {
 
   <div class="wrap">
     <section class="band">
-      <div class="band__head"><h2>Works</h2><a href="/work">All ${work.length} works</a></div>
+      <div class="band__head"><h2>Works</h2><a href="${u('work')}">All ${work.length} works</a></div>
       <div class="grid grid--2">${work.slice(0, 6).map(p => tile(p)).join('\n')}</div>
     </section>
 
     <section class="band">
-      <div class="band__head"><h2>1-hour projects</h2><a href="/1-hour-projects">All ${lab.length}</a></div>
+      <div class="band__head"><h2>1-hour projects</h2><a href="${u('1-hour-projects')}">All ${lab.length}</a></div>
       <p class="band__note">Very short experiments. Build it fast, ship it, write down what broke.</p>
       <div class="grid grid--3">${lab.slice(0, 3).map(p => tile(p)).join('\n')}</div>
     </section>
 
     <section class="band">
-      <div class="band__head"><h2>Media Diaries</h2><a href="/media-diaries">All ${data.pages.filter(p => p.section === 'diaries').length}</a></div>
+      <div class="band__head"><h2>Media Diaries</h2><a href="${u('media-diaries')}">All ${data.pages.filter(p => p.section === 'diaries').length}</a></div>
       ${listing(data, diarySection, diaries)}
     </section>
   </div>
@@ -523,7 +529,7 @@ export function renderThanks(data) {
     mast(data, '/contact'),
     `<main id="main"><div class="wrap"><div class="phead">
   <h1>Message sent</h1>
-  <p>Thank you. <a href="/work">Back to the works</a>.</p>
+  <p>Thank you. <a href="${u('work')}">Back to the works</a>.</p>
 </div></div></main>`,
     foot(data)
   ].join('\n');
@@ -536,7 +542,7 @@ export function render404(data) {
     mast(data, ''),
     `<main id="main"><div class="wrap"><div class="phead">
   <h1>No page at this address</h1>
-  <p>It moved, or it never existed. Try the <a href="/work">works</a>, the <a href="/media-diaries">media diaries</a>, or the <a href="/1-hour-projects">1-hour projects</a>.</p>
+  <p>It moved, or it never existed. Try the <a href="${u('work')}">works</a>, the <a href="${u('media-diaries')}">media diaries</a>, or the <a href="${u('1-hour-projects')}">1-hour projects</a>.</p>
 </div></div></main>`,
     foot(data)
   ].join('\n');
@@ -593,7 +599,7 @@ export function buildAll(data) {
   out['assets/favicon.svg'] = favicon();
   /* GitHub Pages: a custom domain needs CNAME in the published output, and
      .nojekyll stops Jekyll from eating folders that begin with an underscore. */
-  out['CNAME'] = cname(data);
+  if (data.site.customDomain) out['CNAME'] = cname(data);
   out['.nojekyll'] = '';
   return out;
 }

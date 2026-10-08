@@ -22,8 +22,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - uses: actions/configure-pages@v5
+        id: pages
       - name: Build the site
         run: node build/build.mjs .
+        env:
+          # '' on a custom domain, '/portfolio' on the github.io project URL
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

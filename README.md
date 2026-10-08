@@ -14,9 +14,16 @@ pieces, charts and small interactive explainers all embed instead of linking out
 2. Settings → Pages → **Source: GitHub Actions**.
 3. Push. `.github/workflows/deploy.yml` runs `node build/build.mjs .` and publishes
    `dist/`. Takes about a minute.
-4. When you are ready to move the domain: Settings → Pages → Custom domain →
-   `odedstrauss.com`, then point the DNS at GitHub. The build already writes a
-   `CNAME` file into `dist/`, so it survives every deploy.
+4. The site appears at `edyowc.github.io/portfolio`. Every link is prefixed with
+   that subpath automatically — `actions/configure-pages` tells the build where it
+   is living, so the same commit serves both the preview and the real domain.
+5. When you are ready to move the domain: set `"customDomain": true` in
+   `content.json` → `site`, push, then Settings → Pages → Custom domain →
+   `odedstrauss.com` and point the DNS at GitHub. The build then writes a `CNAME`
+   file into the output so it survives every deploy, and drops the subpath.
+
+Leave `customDomain` as `false` until the DNS is ready: a `CNAME` file for a
+domain that does not point at GitHub yet will take the github.io preview down.
 
 `dist/` is gitignored — it is built in CI, never committed. There is nothing to
 drag anywhere.
