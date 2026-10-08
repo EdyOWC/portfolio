@@ -93,25 +93,28 @@ function filters(pages) {
 
 /* ---------- blocks ---------- */
 
-function gate({ src, title, ratio, tall, caption, note, kind, poster }, extra = '') {
+function gate({ src, title, ratio, tall, caption, note, kind, poster, defer }, extra = '') {
   const shape = tall ? ' gate--tall' : (ratio === '1/1' ? ' gate--square' : '');
-  /* Nothing loads until asked. An embedded site that appears unbidden reads as
-     a page inside a page; behind a deliberate click it reads as a thing you
-     opened. The iframe is written by site.js on first click. */
-  return `<div class="gate${shape}${extra}">
-  <div class="gate__frame" data-embed="${esc(src)}" data-title="${esc(title || '')}">
-    <div class="gate__stage">
-      <button class="gate__open" type="button"${poster ? ` style="background-image:url(${esc(u(poster))})"` : ''}>
+  /* Tours and apps load straight away: the whole point is that the work runs
+     inside the page. Video is deferred behind its own thumbnail, because a
+     player that loads unbidden is just weight. */
+  const stage = defer
+    ? `<button class="gate__open" type="button"${poster ? ` style="background-image:url(${esc(poster)})"` : ''}>
         <span class="gate__glyph" aria-hidden="true"></span>
-        <span class="gate__label">${esc(title || 'Open this')}</span>
+        <span class="gate__label">${esc(title || 'Play')}</span>
         <span class="gate__host">${esc(kind || host(src))}</span>
-      </button>
-    </div>
+      </button>`
+    : `<iframe src="${esc(src)}" title="${esc(title || 'Embedded experience')}" loading="lazy"
+         allow="${IFRAME_ALLOW}" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+
+  return `<div class="gate${shape}${extra}">
+  <div class="gate__frame" data-embed="${esc(src)}" data-title="${esc(title || '')}"${defer ? '' : ' data-loaded="1"'}>
+    <div class="gate__stage">${stage}</div>
     <div class="gate__bar">
       <span class="gate__src">${esc(kind || host(src))}</span>
       <span class="spacer"></span>
-      <button class="gate__btn" type="button" data-fullscreen>Full screen</button>
-      <a class="gate__btn" href="${esc(src)}" target="_blank" rel="noopener">Open in a tab</a>
+      <button class="gate__btn gate__btn--go" type="button" data-fullscreen>Open full screen</button>
+      <a class="gate__btn" href="${esc(src)}" target="_blank" rel="noopener">New tab</a>
     </div>
   </div>
   ${caption ? `<p class="gate__cap"${isHe(caption) ? ' dir="rtl"' : ''}>${inline(caption)}</p>` : ''}
@@ -157,10 +160,10 @@ function block(b, page) {
         b.caption ? `<p class="gate__cap">${inline(b.caption)}</p>` : ''}</div>`;
 
     case 'youtube':
-      return gate({ src: `https://www.youtube-nocookie.com/embed/${b.id}?autoplay=1`, title: b.title, caption: b.caption, kind: 'YouTube', poster: `https://i.ytimg.com/vi/${b.id}/maxresdefault.jpg` });
+      return gate({ src: `https://www.youtube-nocookie.com/embed/${b.id}?autoplay=1`, title: b.title, caption: b.caption, kind: 'YouTube', poster: `https://i.ytimg.com/vi/${b.id}/maxresdefault.jpg`, defer: true });
 
     case 'vimeo':
-      return gate({ src: `https://player.vimeo.com/video/${b.id}`, title: b.title, caption: b.caption, kind: 'Vimeo' });
+      return gate({ src: `https://player.vimeo.com/video/${b.id}`, title: b.title, caption: b.caption, kind: 'Vimeo', defer: true });
 
     case 'embed':
       return gate(b);

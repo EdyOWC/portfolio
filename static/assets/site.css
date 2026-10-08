@@ -334,6 +334,10 @@ figcaption { font-size: var(--step--1); color: var(--ink-3); margin-top: .5rem; 
 .gate__bar .spacer { margin-inline-start: auto; }
 .gate__btn { background: none; border: 1px solid #2A2D32; color: #C6CBD1; font: inherit; font-family: var(--serif); padding: .14rem .55rem; cursor: pointer; text-decoration: none; white-space: nowrap; }
 .gate__btn:hover { border-color: #8C939B; color: #fff; }
+/* The invitation to go full screen, which is how a 360 tour wants to be seen */
+.gate__btn--go { border-color: #4A5058; color: #EDEFF2; }
+.gate__btn--go::before { content: "\2922\00a0"; opacity: .7; }
+.gate__btn--go:hover { background: #EDEFF2; color: #15171A; border-color: #EDEFF2; }
 .gate__cap { font-size: var(--step--1); color: var(--ink-3); margin-top: .55rem; max-width: var(--measure); line-height: 1.5; }
 .gate__note { margin-top: .3rem; font-size: var(--step--2); color: var(--mark); max-width: var(--measure); }
 

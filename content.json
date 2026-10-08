@@ -94,7 +94,7 @@
       "title": "Media Diaries",
       "heading": "Media Diaries",
       "intro": "I studied digital media and film. These are notes on projects, events, data and the state of the industry — some in English, some in Hebrew.",
-      "layout": "list"
+      "layout": "grid"
     },
     {
       "id": "lab",
@@ -277,7 +277,7 @@
         "Exhibition"
       ],
       "description": "Co-directing the Digital Media exhibit and competition at the Tel Aviv International Student Film Festival, held at the Tel Aviv Cinematheque.",
-      "cover": "assets/img/past-events-cover.jpg",
+      "cover": "assets/img/past-events-cover.png",
       "blocks": [
         {
           "type": "text",
@@ -958,7 +958,7 @@
         "3D"
       ],
       "description": "Building 3D models from crowd-sourced photographs.",
-      "cover": "assets/img/lab-photogrammetry.jpg",
+      "cover": "assets/img/lab-photogrammetry.gif",
       "blocks": [
         {
           "type": "todo",
@@ -1021,7 +1021,8 @@
           "dir": "rtl",
           "body": "העתק לכאן את הטקסט מ-odedstrauss.com/donttrusttheirwords"
         }
-      ]
+      ],
+      "cover": "assets/img/diary-donttrusttheirwords.jpg"
     },
     {
       "slug": "16a4650c788ab5",
@@ -1036,7 +1037,8 @@
           "dir": "rtl",
           "body": "העתק לכאן את הטקסט מהעמוד המקורי. שווה לשנות את ה-slug למשהו קריא — ולהוסיף redirect מהישן."
         }
-      ]
+      ],
+      "cover": "assets/img/diary-16a4650c788ab5.jpg"
     },
     {
       "slug": "art-basterds",
@@ -1051,7 +1053,8 @@
           "dir": "rtl",
           "body": "העתק לכאן את הטקסט מ-odedstrauss.com/art-basterds"
         }
-      ]
+      ],
+      "cover": "assets/img/diary-art-basterds.jpg"
     },
     {
       "slug": "media-visions-further-other-and-completely-new",
@@ -1064,7 +1067,8 @@
       "tags": [
         "Theory",
         "Media"
-      ]
+      ],
+      "cover": "assets/img/diary-media-visions-further-other-and-completely-new.jpg"
     },
     {
       "slug": "360",
@@ -1079,7 +1083,8 @@
           "dir": "rtl",
           "body": "העתק לכאן את הטקסט. דף שמתאים לבלוק embed של סיור 360."
         }
-      ]
+      ],
+      "cover": "assets/img/diary-360.jpg"
     },
     {
       "slug": "heritageoffilm",
@@ -1094,7 +1099,8 @@
           "dir": "rtl",
           "body": "העתק לכאן את הטקסט מ-odedstrauss.com/heritageoffilm"
         }
-      ]
+      ],
+      "cover": "assets/img/diary-heritageoffilm.jpg"
     },
     {
       "slug": "169c575dd48513",
@@ -1107,7 +1113,8 @@
           "type": "todo",
           "body": "Paste the text from the original page here. Worth renaming this slug to something readable and adding a redirect from the old one."
         }
-      ]
+      ],
+      "cover": "assets/img/diary-169c575dd48513.jpg"
     },
     {
       "slug": "hot-2026",
@@ -1122,7 +1129,8 @@
         "הפצה",
         "תעשייה",
         "אירוע"
-      ]
+      ],
+      "cover": "assets/img/diary-hot-2026.jpg"
     },
     {
       "slug": "pureimage",
@@ -1137,7 +1145,8 @@
           "dir": "rtl",
           "body": "העתק לכאן את הטקסט מ-odedstrauss.com/pureimage"
         }
-      ]
+      ],
+      "cover": "assets/img/diary-pureimage.jpg"
     },
     {
       "slug": "memory-room",
@@ -1151,7 +1160,8 @@
         "UX",
         "VR",
         "Unity"
-      ]
+      ],
+      "cover": "assets/img/diary-memory-room.jpg"
     },
     {
       "slug": "multimedia-auschwitz-lfgiohio",
@@ -1166,7 +1176,8 @@
           "dir": "rtl",
           "body": "העתק לכאן את הטקסט מהעמוד המקורי."
         }
-      ]
+      ],
+      "cover": "assets/img/diary-multimedia-auschwitz-lfgiohio.jpg"
     },
     {
       "slug": "jaguar-411-the-secrets-of-ar",
@@ -1180,7 +1191,8 @@
         "AR",
         "Snapchat",
         "Game"
-      ]
+      ],
+      "cover": "assets/img/diary-jaguar-411-the-secrets-of-ar.jpg"
     },
     {
       "slug": "information-and-media-it-sounds-better-in-hebrew",
@@ -1193,7 +1205,8 @@
           "type": "todo",
           "body": "Paste the text from the original page here."
         }
-      ]
+      ],
+      "cover": "assets/img/diary-information-and-media-it-sounds-better-in-hebrew.jpg"
     },
     {
       "slug": "1022-films",
@@ -1206,7 +1219,8 @@
           "type": "todo",
           "body": "Paste the text from the original page here. Link back to /mvp."
         }
-      ]
+      ],
+      "cover": "assets/img/diary-1022-films.jpg"
     },
     {
       "slug": "all-about-those-hills",
@@ -1221,7 +1235,8 @@
         "משחקים",
         "נוף",
         "עיצוב עולם"
-      ]
+      ],
+      "cover": "assets/img/diary-all-about-those-hills.jpg"
     },
     {
       "slug": "crafting-cinematic-magic",
@@ -1235,7 +1250,8 @@
         "Cognition",
         "Cinema",
         "Data"
-      ]
+      ],
+      "cover": "assets/img/diary-crafting-cinematic-magic.jpg"
     },
     {
       "slug": "how-to-watch-a-film",
@@ -1248,7 +1264,8 @@
       "tags": [
         "Exhibition",
         "Cinema"
-      ]
+      ],
+      "cover": "assets/img/diary-how-to-watch-a-film.jpg"
     },
     {
       "slug": "moving-to-the-digital-age-ba-mfa",
@@ -1262,7 +1279,8 @@
         "Research",
         "Method",
         "Data"
-      ]
+      ],
+      "cover": "assets/img/diary-moving-to-the-digital-age-ba-mfa.jpg"
     },
     {
       "slug": "rokus-basilisk-1",
@@ -1275,7 +1293,8 @@
       "tags": [
         "UX",
         "Eye tracking"
-      ]
+      ],
+      "cover": "assets/img/diary-rokus-basilisk-1.jpg"
     }
   ],
   "redirects": [
