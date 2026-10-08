@@ -204,6 +204,15 @@ function block(b, page) {
     case 'embed':
       return gate(b);
 
+    /* Small interactive pieces that belong to one essay. Each is a plain
+       HTML file in static/widgets/, framed so its CSS cannot leak. */
+    case 'widget':
+      return `<figure class="widget">
+  <iframe src="/widgets/${esc(b.name)}.html" title="${esc(b.caption || b.name)}" loading="lazy"
+          data-autosize scrolling="no"></iframe>
+  ${b.caption ? `<figcaption${isHe(b.caption) ? ' dir="rtl"' : ''}>${inline(b.caption)}</figcaption>` : ''}
+</figure>`;
+
     /* Escape hatch: paste any provider's embed snippet verbatim. */
     case 'html':
       return `<div class="gate"><div class="gate__frame">
@@ -218,6 +227,60 @@ function block(b, page) {
     default:
       return '';
   }
+}
+
+/* ---------- markdown essays ---------- */
+/* Long pieces live in texts/<name>.md so they can be edited as prose.
+   Supported: ## heading, > quote, - list, 1. list, @embed URL | caption,
+   @youtube ID | caption, @image path | caption, plus **bold**, *italic*,
+   [link](url). A blank line separates paragraphs. */
+function parseText(md, lang) {
+  const blocks = [];
+  const chunks = md.replace(/\r/g, '').split(/\n{2,}/).map(c => c.trim()).filter(Boolean);
+  let first = true;
+  for (const c of chunks) {
+    const rtl = lang === 'he' || /[\u0590-\u05FF]/.test(c);
+    const dir = rtl ? 'rtl' : undefined;
+
+    let m;
+    if ((m = c.match(/^@(embed|youtube|vimeo|image|widget)\s+(\S+)\s*(?:\|\s*([\s\S]+))?$/))) {
+      const [, kind, ref, caption] = m;
+      if (kind === 'embed') blocks.push({ type: 'embed', src: ref, title: caption || '', caption, tall: true });
+      else if (kind === 'youtube') blocks.push({ type: 'youtube', id: ref, caption });
+      else if (kind === 'vimeo') blocks.push({ type: 'vimeo', id: ref, caption });
+      else if (kind === 'widget') blocks.push({ type: 'widget', name: ref, caption });
+      else blocks.push({ type: 'image', src: ref, alt: caption || '', caption });
+      continue;
+    }
+    if (c.startsWith('## ')) { blocks.push({ type: 'heading', body: c.slice(3), dir }); continue; }
+    if (c.startsWith('> ')) {
+      const lines = c.split('\n');
+      const cite = lines[lines.length - 1].startsWith('> --') ? lines.pop().slice(5).trim() : null;
+      blocks.push({ type: 'quote', body: lines.map(l => l.replace(/^>\s?/, '')).join('\n'), cite, dir });
+      continue;
+    }
+    if (/^(\d+\.|[-*])\s/.test(c)) {
+      const ordered = /^\d+\./.test(c);
+      const items = c.split('\n').map(l => l.replace(/^(\d+\.|[-*])\s*/, '').trim()).filter(Boolean);
+      blocks.push({ type: 'list', ordered, items, dir });
+      continue;
+    }
+    if (first && c.length < 220) { blocks.push({ type: 'lede', body: c, dir }); first = false; continue; }
+    first = false;
+    blocks.push({ type: 'text', body: c, dir });
+  }
+  return blocks;
+}
+
+/* Pages declare "text": "<name>"; the build swaps in the parsed file. */
+function hydrate(data, texts) {
+  data.pages.forEach(p => {
+    if (!p.text) return;
+    const md = texts[p.text];
+    if (md == null) return;
+    p.blocks = [...parseText(md, p.lang), ...(p.blocks || []).filter(b => b.type !== 'todo')];
+  });
+  return data;
 }
 
 /* ---------- chrome ---------- */
@@ -327,7 +390,7 @@ function facts(data, page) {
 }
 
 /* Media and galleries break out of the text measure; prose stays narrow. */
-const WIDE = new Set(['embed', 'html', 'youtube', 'vimeo', 'video', 'gallery', 'image']);
+const WIDE = new Set(['embed', 'html', 'youtube', 'vimeo', 'video', 'gallery', 'image', 'widget']);
 
 function renderPage(data, page) {
   const s = data.site;
@@ -481,15 +544,22 @@ function renderContact(data) {
   </div>
   <div class="article" style="padding-top:2rem">
     <div>
-      <form class="form" name="contact" method="POST" data-netlify="true" netlify-honeypot="company" action="/thanks">
-        <input type="hidden" name="form-name" value="contact">
-        <p class="hp"><label>Leave this empty <input name="company"></label></p>
+      ${s.formEndpoint
+    ? `<form class="form" method="POST" action="${esc(s.formEndpoint)}">
         <label>Name <input type="text" name="name" required autocomplete="name"></label>
         <label>Email <input type="email" name="email" required autocomplete="email"></label>
         <label>Message <textarea name="message" required></textarea></label>
         <button type="submit">Send message</button>
-      </form>
-      <p class="contact-aside">I read everything and answer most of it. If it is time-sensitive, say so in the first line.</p>
+      </form>`
+    /* GitHub Pages has no server, so with no form service configured the form
+       composes the message in the visitor's own mail client instead. */
+    : `<form class="form" data-mailto="${esc(s.email)}">
+        <label>Name <input type="text" name="name" required autocomplete="name"></label>
+        <label>Subject <input type="text" name="subject" required></label>
+        <label>Message <textarea name="message" required></textarea></label>
+        <button type="submit">Write this email</button>
+      </form>`}
+  <p class="contact-aside">${s.formEndpoint ? 'I read everything and answer most of it. If it is time-sensitive, say so in the first line.' : `This opens your own mail app with the message ready to send. Or write straight to <a href="mailto:${esc(s.email)}">${esc(s.email)}</a>.`}</p>
     </div>
   </div>
 </div></main>`,
@@ -538,30 +608,11 @@ const robots = (data) => `User-agent: *\nAllow: /\n\nSitemap: ${data.site.origin
 
 /* Old Adobe Portfolio slugs are preserved one-for-one, so nothing to redirect
    except the two index aliases. Add a line here whenever you rename a slug. */
-const redirects = () => `# old path            new path             code
-/work                 /work                200
-/about                /about               200
-`;
+/* GitHub Pages serves 404.html for anything missing and has no redirect
+   engine. If a slug is ever renamed, add a small stub page here. */
+const cname = (data) => data.site.origin.replace(/^https?:\/\//, '').replace(/\/$/, '') + '\n';
 
-const headers = () => `/*
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(self), microphone=(self), gyroscope=*, accelerometer=*, magnetometer=*, xr-spatial-tracking=*, fullscreen=*
 
-/assets/*
-  Cache-Control: public, max-age=31536000, immutable
-`;
-
-const netlifyToml = () => `[build]
-  publish = "."
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "frame-ancestors 'self' https:"
-`;
 
 /* A registration mark: the thing a projectionist lines a frame up against. */
 const favicon = () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -590,10 +641,11 @@ function buildAll(data) {
 
   out['sitemap.xml'] = sitemap(data);
   out['robots.txt'] = robots(data);
-  out['_redirects'] = redirects(data);
-  out['_headers'] = headers(data);
-  out['netlify.toml'] = netlifyToml(data);
   out['assets/favicon.svg'] = favicon();
+  /* GitHub Pages: a custom domain needs CNAME in the published output, and
+     .nojekyll stops Jekyll from eating folders that begin with an underscore. */
+  out['CNAME'] = cname(data);
+  out['.nojekyll'] = '';
   return out;
 }
 
