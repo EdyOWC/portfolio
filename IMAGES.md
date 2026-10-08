@@ -1,11 +1,9 @@
 # Images to upload
 
-Drop each file into static/assets/img/ using EXACTLY the filename below.
-The extension must match too (.jpg vs .png vs .gif).
-Landscape, 1200px wide or more, is ideal — tiles crop to 4:3.
+Drop each into static/assets/img/ using EXACTLY this filename, extension included.
+Landscape, 1200px+ wide. Tiles crop to 4:3.
 
-**3 in, 35 to go.**
-
+**5 in, 33 to go.**
 
 ## Works
 
@@ -42,10 +40,10 @@ Landscape, 1200px wide or more, is ideal — tiles crop to 4:3.
 - [ ] diary-hot-2026.jpg  —  הוט 2026: כנס האופטימיות של הקולנוע (2026)
 - [ ] diary-pureimage.jpg  —  בעקבות התמונה הטהורה (2026)
 - [ ] diary-multimedia-auschwitz-lfgiohio.jpg  —  מולטימדיה, אושוויץ וילדות מאוהיו (2026)
-- [ ] diary-jaguar-411-the-secrets-of-ar.jpg  —  Jaguar 411: The Secrets of AR (2026)
+- [x] diary-jaguar-411-the-secrets-of-ar.png  —  Jaguar 411: The Secrets of AR (2026)  ✓ in
 - [ ] diary-information-and-media-it-sounds-better-in-hebrew.jpg  —  Information and Media — It Sounds Better in Hebrew (2026)
 - [ ] diary-memory-room.jpg  —  Memory Room — UX diaries (2025)
-- [ ] diary-1022-films.jpg  —  1022 Films (2025)
+- [x] diary-1022-films.jpg  —  1022 Films (2025)  ✓ in
 - [ ] diary-all-about-those-hills.jpg  —  על הרים וגבעות (2025)
 - [ ] diary-crafting-cinematic-magic.jpg  —  Crafting Cinematic Magic (2025)
 - [ ] diary-moving-to-the-digital-age-ba-mfa.jpg  —  Moving to the Digital Age (2025)

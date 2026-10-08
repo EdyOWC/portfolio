@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1022 films by decade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;600&display=swap">
+<style>
+  :root { --paper:#FAF8F4; --ink:#121316; --ink-2:#474C53; --ink-3:#757A81;
+          --rule:#D4CFC3; --off:#E6E2DA; --mark:#8C2230; --cool:#15555A; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:1.1rem 1.2rem 1.3rem; background:var(--paper); color:var(--ink);
+         font:400 15px/1.55 "Spectral",Georgia,serif; }
+
+  .modes { display:flex; gap:.4rem; margin-bottom:1rem; flex-wrap:wrap; }
+  .modes button { font:inherit; font-size:.86em; color:var(--ink-2); background:none;
+                  border:1px solid var(--rule); padding:.18rem .7rem; border-radius:100px; cursor:pointer; }
+  .modes button:hover { border-color:var(--ink); color:var(--ink); }
+  .modes button[aria-pressed="true"] { background:var(--ink); border-color:var(--ink); color:var(--paper); }
+
+  .chart { display:grid; grid-template-columns:repeat(13,1fr); gap:3px; align-items:end;
+           height:230px; border-bottom:1px solid var(--ink); }
+  .col { position:relative; height:100%; display:flex; align-items:flex-end;
+         background:none; border:0; padding:0; cursor:pointer; }
+  .col i { display:block; width:100%; background:var(--ink); transition:height .6s cubic-bezier(.2,.7,.3,1), background .18s; }
+  .col:hover i, .col[aria-pressed="true"] i { background:var(--mark); }
+  .col.pre i { background:var(--cool); }
+  .col.pre:hover i, .col.pre[aria-pressed="true"] i { background:var(--mark); }
+  .axis { display:grid; grid-template-columns:repeat(13,1fr); gap:3px; margin-top:.4rem; }
+  .axis span { font-size:.68em; color:var(--ink-3); text-align:center;
+               font-variant-numeric:lining-nums; }
+  @media (max-width:560px) { .axis span { font-size:.56em; } }
+
+  .readout { margin-top:1rem; padding-top:.8rem; border-top:1px solid var(--rule);
+             color:var(--ink-2); min-height:3.4em; }
+  .readout b { color:var(--ink); font-weight:600; }
+  .big { font-size:1.5em; color:var(--mark); font-variant-numeric:lining-nums; }
+  .note { margin-top:.6rem; font-size:.82em; color:var(--ink-3); }
+  :focus-visible { outline:2px solid var(--mark); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+<div class="modes" id="modes">
+  <button type="button" data-m="count" aria-pressed="true">Films per decade</button>
+  <button type="button" data-m="share" aria-pressed="false">Share of all 1022</button>
+  <button type="button" data-m="cum" aria-pressed="false">Running total</button>
+</div>
+
+<div class="chart" id="chart"></div>
+<div class="axis" id="axis"></div>
+
+<p class="readout" id="readout"></p>
+<p class="note">1,022 films, counted one by one. Decades before 1920 are empty.</p>
+
+<script>
+// Counted by hand, from the list of every film I have seen.
+var D = [
+  { d: 1900, n: 0 }, { d: 1910, n: 0 }, { d: 1920, n: 8 }, { d: 1930, n: 12 },
+  { d: 1940, n: 18 }, { d: 1950, n: 23 }, { d: 1960, n: 37 }, { d: 1970, n: 53 },
+  { d: 1980, n: 58 }, { d: 1990, n: 102 }, { d: 2000, n: 248 }, { d: 2010, n: 298 },
+  { d: 2020, n: 165 }
+];
+var TOTAL = D.reduce(function (a, b) { return a + b.n; }, 0);
+
+var chart = document.getElementById('chart');
+var axis = document.getElementById('axis');
+var readout = document.getElementById('readout');
+var mode = 'count', picked = null;
+
+D.forEach(function (x, i) {
+  var b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'col' + (x.d < 1990 ? ' pre' : '');
+  b.dataset.i = i;
+  b.setAttribute('aria-pressed', 'false');
+  b.setAttribute('aria-label', x.d + 's, ' + x.n + ' films');
+  b.innerHTML = '<i style="height:0"></i>';
+  chart.appendChild(b);
+
+  var s = document.createElement('span');
+  s.textContent = "'" + String(x.d).slice(2);
+  axis.appendChild(s);
+});
+
+function values() {
+  if (mode === 'cum') {
+    var run = 0;
+    return D.map(function (x) { return (run += x.n); });
+  }
+  return D.map(function (x) { return x.n; });
+}
+
+function draw() {
+  var v = values();
+  var max = Math.max.apply(null, v);
+  v.forEach(function (n, i) {
+    chart.children[i].querySelector('i').style.height = (n / max * 100) + '%';
+    chart.children[i].setAttribute('aria-pressed', String(picked === i));
+  });
+  if (picked === null) summary();
+}
+
+function summary() {
+  if (mode === 'cum') {
+    readout.innerHTML = 'Half of everything I have seen was made after <b>2004</b>. ' +
+      'The running total barely moves for seventy years, then goes nearly vertical.';
+  } else if (mode === 'share') {
+    readout.innerHTML = 'The 2000s and 2010s alone are <span class="big">53.5%</span> of everything. ' +
+      'The whole of 1920 to 1980 is 20.5%.';
+  } else {
+    readout.innerHTML = '<span class="big">1,022</span> films across thirteen decades. ' +
+      'Select a decade for its numbers.';
+  }
+}
+
+chart.addEventListener('click', function (e) {
+  var col = e.target.closest('.col');
+  if (!col) return;
+  var i = Number(col.dataset.i);
+  picked = picked === i ? null : i;
+  draw();
+  if (picked === null) { summary(); return; }
+  var x = D[i], share = (x.n / TOTAL * 100).toFixed(1);
+  var run = D.slice(0, i + 1).reduce(function (a, b) { return a + b.n; }, 0);
+  readout.innerHTML = x.n === 0
+    ? '<b>' + x.d + 's</b> — nothing. The feature film was barely a form yet.'
+    : '<b>' + x.d + 's</b> — <span class="big">' + x.n + '</span> films, ' + share +
+      '% of the total. By the end of this decade I had seen ' + run +
+      ' of the 1,022, or ' + (run / TOTAL * 100).toFixed(0) + '%.';
+});
+
+document.getElementById('modes').addEventListener('click', function (e) {
+  var b = e.target.closest('button[data-m]');
+  if (!b) return;
+  mode = b.dataset.m;
+  picked = null;
+  Array.prototype.forEach.call(this.children, function (x) {
+    x.setAttribute('aria-pressed', String(x === b));
+  });
+  draw();
+});
+
+requestAnimationFrame(function () { draw(); summary(); });
+</script>
+<script src="/widgets/_autosize.js"></script>
+</body>
+</html>

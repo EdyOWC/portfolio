@@ -8,6 +8,8 @@ To get us excited about the technology, the instructors brought in someone from 
 
 ## Trigger, key, content
 
+@image assets/img/diary-jaguar-411-the-secrets-of-ar.png | Trigger plus key equals content. The trigger is an innocent object in public space; the key is the code that binds it to something hidden.
+
 The system has three parts. The trigger can be any object in physical space — graffiti, a bus timetable, a banknote. The key is the code that links the innocent-looking object to the content, and it does not necessarily say which object should be scanned. The content is the content, potentially something secret: instructions for a drink, the location of a treasure, a computer password. Minimal traces. Only the combination of trigger and key leads to what is hidden.
 
 We were sent home to make our first lens. Once I had finished mine I decided to test something. What happens if I show the camera only half the trigger? Will it still display the extra layer? To my surprise, a sixteenth of the trigger object was enough to activate the overlay.

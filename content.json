@@ -1192,7 +1192,7 @@
         "Snapchat",
         "Game"
       ],
-      "cover": "assets/img/diary-jaguar-411-the-secrets-of-ar.jpg"
+      "cover": "assets/img/diary-jaguar-411-the-secrets-of-ar.png"
     },
     {
       "slug": "information-and-media-it-sounds-better-in-hebrew",
@@ -1213,14 +1213,15 @@
       "section": "diaries",
       "title": "1022 Films",
       "year": "2025",
-      "description": "Notes connected to the MVP project.",
-      "blocks": [
-        {
-          "type": "todo",
-          "body": "Paste the text from the original page here. Link back to /mvp."
-        }
+      "description": "Every film I have ever seen, counted and sorted by decade — and what the shape of that curve says.",
+      "blocks": [],
+      "cover": "assets/img/diary-1022-films.jpg",
+      "tags": [
+        "Data",
+        "Cinema",
+        "Self-study"
       ],
-      "cover": "assets/img/diary-1022-films.jpg"
+      "text": "1022-films"
     },
     {
       "slug": "all-about-those-hills",
