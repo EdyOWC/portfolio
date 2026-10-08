@@ -324,7 +324,7 @@
         "Speculative"
       ],
       "description": "A trans-platform experience: the global population moves to one city, reducing the footprint of mankind to a limited, ultra-comfortable space.",
-      "cover": "assets/img/owc-cover.jpg",
+      "cover": "assets/img/owc-04.png",
       "blocks": [
         {
           "type": "credits",
@@ -345,7 +345,7 @@
         },
         {
           "type": "todo",
-          "body": "Two things on this page still need you. Five images are referenced (owc-01 to owc-05) and nothing was placed automatically, because the PowerPoint is a research deck and most of its pictures are other people's. And the VR demo above is hosted on Adobe's servers — re-upload it to YouTube and switch the block to @youtube before you cancel the subscription."
+          "body": "The VR demo above is hosted on Adobe's servers. Re-upload it to YouTube and change the @embed line in texts/one-world-city.md to @youtube before you cancel the subscription."
         }
       ],
       "text": "one-world-city",

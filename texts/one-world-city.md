@@ -20,12 +20,14 @@ Are you ready to see what the future holds?
 
 ## Designing it
 
-@image assets/img/owc-01.jpg | Initial blocking for the apartment model in Miro.
+@image assets/img/owc-01.png | Initial blocking for the apartment model in Miro
 
-@image assets/img/owc-02.jpg | Narrative timeline: from 2020 to 2100.
+@image assets/img/owc-02.png | Narrative Timeline: from 2020 to 2100
 
-@image assets/img/owc-03.jpg | The user's flow through the experience space, from entry to end.
+@image assets/img/owc-03.png | User Flow- explaining the narrative
 
-@image assets/img/owc-04.jpg | User flow, explaining the narrative.
+@image assets/img/owc-04.png | User's flow in the experience space- from entry to end
 
-@image assets/img/owc-05.jpg | The apartment interior.
+@image assets/img/owc-05.png | References
+
+@image assets/img/owc-06.png | Mood board

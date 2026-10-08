@@ -1,16 +1,16 @@
 # Images to upload
 
 Drop each into static/assets/img/ using EXACTLY this filename, extension included.
-Tiles are 9:16 portrait, so portrait sources crop best. 1200px+ on the short side.
+Tiles are 9:16 portrait, so portrait sources crop best.
 
-**14 in, 24 to go.**
+**16 in, 22 to go.**
 
 ## Works
 
-- [ ] dizengoff-cover.jpg  —  Dizengoff Center — Virtual tour demo (2026)
+- [x] dizengoff-cover.png  —  Dizengoff Center — Virtual tour demo (2026)  ✓ in
 - [x] memory-room-cover.jpg  —  Memory Room — VR (2025)  ✓ in
 - [x] past-events-cover.png  —  Past Events (2024)  ✓ in
-- [ ] owc-cover.jpg  —  One World City (2024)
+- [x] owc-04.png  —  One World City (2024)  ✓ in
 - [ ] mvp-cover.jpg  —  MVP (2024)
 - [ ] exodus-cover.jpg  —  Exodus (2023)
 - [x] roko-cover.jpg  —  Roko’s Basilisk (2022)  ✓ in
