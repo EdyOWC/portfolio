@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Further, Other, New</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;600&display=swap">
+<style>
+  :root { --paper:#FAF8F4; --ink:#121316; --ink-2:#474C53; --ink-3:#757A81;
+          --rule:#D4CFC3; --off:#EDE9E1; --mark:#8C2230;
+          --further:#3B4059; --other:#8A5A1E; --new:#15555A; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:1.1rem 1.2rem 1.3rem; background:var(--paper); color:var(--ink);
+         font:400 15px/1.55 "Spectral",Georgia,serif; }
+
+  .prompt { margin:0 0 .9rem; color:var(--ink-2); }
+  .card { background:var(--ink); color:var(--paper); padding:1.1rem 1.2rem;
+          min-height:5.4rem; display:flex; flex-direction:column; justify-content:center; }
+  .card .t { font-size:1.25rem; line-height:1.15; }
+  .card .s { font-size:.84em; opacity:.65; margin-top:.25rem; }
+  .card.done { background:var(--off); color:var(--ink); }
+
+  .axes { display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem; margin-top:.6rem; }
+  .ax { background:none; border:1px solid var(--rule); padding:.7rem .6rem;
+        font:inherit; cursor:pointer; text-align:left; color:var(--ink); }
+  .ax:hover { border-color:var(--ink); }
+  .ax b { display:block; font-weight:600; }
+  .ax span { display:block; font-size:.8em; color:var(--ink-3); line-height:1.35; margin-top:.15rem; }
+  .ax[data-k="further"]:hover b { color:var(--further); }
+  .ax[data-k="other"]:hover b { color:var(--other); }
+  .ax[data-k="new"]:hover b { color:var(--new); }
+  .ax:disabled { opacity:.45; cursor:default; }
+  :focus-visible { outline:2px solid var(--mark); outline-offset:2px; }
+
+  .verdict { margin-top:.9rem; padding-top:.8rem; border-top:1px solid var(--rule);
+             min-height:4.2em; color:var(--ink-2); }
+  .verdict.hide { display:none; }
+  .verdict .tag { font-weight:600; }
+  .tag.further { color:var(--further); } .tag.other { color:var(--other); } .tag.new { color:var(--new); }
+  .hit { color:var(--ink); } .miss { color:var(--mark); }
+
+  .score { display:flex; gap:1rem; align-items:baseline; margin-top:1rem;
+           font-size:.86em; color:var(--ink-3); }
+  .score button { background:none; border:1px solid var(--rule); color:var(--ink-2);
+                  font:inherit; font-size:1em; padding:.15rem .7rem; cursor:pointer;
+                  border-radius:100px; margin-left:auto; }
+  .score button:hover { border-color:var(--ink); color:var(--ink); }
+  .pips { display:flex; gap:3px; }
+  .pip { width:.5rem; height:.5rem; border-radius:50%; background:var(--off); }
+  .pip.hit { background:var(--ink); } .pip.miss { background:var(--mark); }
+</style>
+</head>
+<body>
+
+<p class="prompt">Where does each of these sit on the model?</p>
+<div class="card" id="card"><span class="t"></span><span class="s"></span></div>
+
+<div class="axes" id="axes">
+  <button class="ax" data-k="further" type="button"><b>Further</b><span>More of the same type, same content</span></button>
+  <button class="ax" data-k="other" type="button"><b>Other</b><span>Same type, different content</span></button>
+  <button class="ax" data-k="new" type="button"><b>New</b><span>Something that moves the industry</span></button>
+</div>
+
+<div class="verdict hide" id="verdict"></div>
+
+<div class="score">
+  <span class="pips" id="pips"></span>
+  <span id="tally"></span>
+  <button type="button" id="again">Start again</button>
+</div>
+
+<script>
+var ITEMS = [
+  { t: 'Superman, 1938', s: 'The first superhero comic', k: 'new',
+    why: 'Inventing the genre is the innovation. Before it, toys were unbranded animals and cowboys with no defined story and no marketing rights.' },
+  { t: 'Spider-Man', s: 'A new hero, a new franchise', k: 'other',
+    why: 'A fresh franchise, unbound by another character’s origin but entirely bound by the rules of industry and genre. Dasselbe in Grün — the same thing, only in green.' },
+  { t: 'The newest Spider-Man film', s: 'Another entry in the series', k: 'further',
+    why: 'More knowledge about an existing character, inside a playground with clear guidelines. However successful, it is Further.' },
+  { t: 'Barbie, 1959', s: 'A doll with looks and traits', k: 'new',
+    why: 'It changed how girls everywhere play. Since then children scream at their mothers for the toy of a specific brand.' },
+  { t: 'Bratz', s: 'A rival fashion doll line', k: 'other',
+    why: 'Another product in the same market, not a disruption of it.' },
+  { t: 'Star Wars, 1977', s: 'Marketed as a Western in space', k: 'other',
+    why: 'As a film it is a window into a new franchise built on the rules of the Western. Its real innovation came from a completely different direction.' },
+  { t: 'Lucas taking the merchandise rights', s: 'Instead of a higher salary', k: 'new',
+    why: 'Revolutionary for its time, and it changed the film industry outright — far beyond his own pocket.' },
+  { t: 'The Terminator', s: 'Cameron on human–machine relations', k: 'other',
+    why: 'It connects to Blade Runner, Modern Times and Asimov. Cameron worked the Other axis across many years.' },
+  { t: 'Another Harry Potter spin-off', s: 'Films, games, books, a TV series', k: 'further',
+    why: 'The franchise has not offered a new idea since the first book. The interest behind more merchandise is purely commercial.' },
+  { t: 'A film made with no human prompt at all', s: 'No script, no editing, no direction', k: 'new',
+    why: 'If it is possible, it changes everything from copyright to film schools. No camera rental, no editing software, no need for many people’s expertise.' }
+];
+
+var LABEL = { further: 'Further', other: 'Other', new: 'Completely New' };
+
+var order, idx, hits, misses;
+var card = document.getElementById('card');
+var axes = document.getElementById('axes');
+var verdict = document.getElementById('verdict');
+var pips = document.getElementById('pips');
+var tally = document.getElementById('tally');
+
+function shuffle(a) {
+  a = a.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+
+function reset() {
+  order = shuffle(ITEMS);
+  idx = 0; hits = 0; misses = 0;
+  pips.innerHTML = '';
+  show();
+}
+
+function show() {
+  verdict.className = 'verdict hide';
+  setButtons(false);
+  if (idx >= order.length) {
+    card.className = 'card done';
+    card.querySelector('.t').textContent = hits + ' of ' + order.length + ' placed as I would place them';
+    card.querySelector('.s').textContent = 'The disagreements are the interesting part.';
+    setButtons(true);
+    return;
+  }
+  card.className = 'card';
+  card.querySelector('.t').textContent = order[idx].t;
+  card.querySelector('.s').textContent = order[idx].s;
+  tally.textContent = 'Item ' + (idx + 1) + ' of ' + order.length;
+}
+
+function setButtons(off) {
+  Array.prototype.forEach.call(axes.children, function (b) { b.disabled = off; });
+}
+
+axes.addEventListener('click', function (e) {
+  var b = e.target.closest('.ax');
+  if (!b || b.disabled || idx >= order.length) return;
+  var item = order[idx];
+  var right = b.dataset.k === item.k;
+  right ? hits++ : misses++;
+
+  var pip = document.createElement('span');
+  pip.className = 'pip ' + (right ? 'hit' : 'miss');
+  pips.appendChild(pip);
+
+  verdict.className = 'verdict';
+  verdict.innerHTML =
+    '<span class="' + (right ? 'hit' : 'miss') + '">' +
+    (right ? 'Same as me.' : 'I put it elsewhere.') + '</span> ' +
+    '<span class="tag ' + item.k + '">' + LABEL[item.k] + '.</span> ' + item.why;
+
+  setButtons(true);
+  idx++;
+  setTimeout(show, 2600);
+});
+
+document.getElementById('again').addEventListener('click', reset);
+reset();
+</script>
+<script src="/widgets/_autosize.js"></script>
+</body>
+</html>

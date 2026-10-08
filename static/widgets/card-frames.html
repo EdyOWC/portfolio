@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forty-one frames</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;600&display=swap">
+<style>
+  :root { --paper:#FAF8F4; --ink:#121316; --ink-2:#474C53; --ink-3:#757A81;
+          --rule:#D4CFC3; --mark:#8C2230; --off:#E6E2DA; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:1.1rem 1.2rem 1.3rem; background:var(--paper); color:var(--ink);
+         font:400 15px/1.55 "Spectral",Georgia,serif; }
+
+  .strip { display:grid; grid-template-columns:repeat(41,1fr); gap:2px; }
+  .strip .f { aspect-ratio:2/3; background:var(--off); border:0; padding:0;
+              cursor:pointer; transition:background .18s, transform .18s; }
+  .strip .f.on { background:var(--mark); }
+  .strip .f:hover, .strip .f:focus-visible { transform:translateY(-3px); }
+  .strip .f:focus-visible { outline:2px solid var(--ink); outline-offset:1px; }
+  @media (max-width:560px) { .strip { grid-template-columns:repeat(21,1fr); } }
+
+  .scale { display:flex; justify-content:space-between; color:var(--ink-3);
+           font-size:.82em; margin-top:.4rem; font-variant-numeric:lining-nums; }
+
+  .compare { margin-top:1.4rem; display:grid; gap:.55rem; }
+  .cmp { display:grid; grid-template-columns:11rem 1fr 3.6rem; gap:.7rem;
+         align-items:center; font-size:.92em; }
+  .cmp .k { color:var(--ink-2); }
+  .cmp .bar { background:var(--off); height:1.15rem; }
+  .cmp .bar i { display:block; height:100%; background:var(--ink); width:0;
+                transition:width .7s cubic-bezier(.2,.7,.3,1); }
+  .cmp.hero .bar i { background:var(--mark); }
+  .cmp.hero .k, .cmp.hero .v { color:var(--mark); }
+  .cmp .v { text-align:right; color:var(--ink-3);
+            font-variant-numeric:lining-nums tabular-nums; }
+  @media (max-width:560px) { .cmp { grid-template-columns:8rem 1fr 3.2rem; font-size:.86em; } }
+
+  .readout { margin-top:1.1rem; padding-top:.8rem; border-top:1px solid var(--rule);
+             color:var(--ink-2); min-height:3em; }
+  .readout b { font-weight:600; color:var(--ink); }
+  .note { margin-top:.7rem; font-size:.82em; color:var(--ink-3); }
+</style>
+</head>
+<body>
+
+<div class="strip" id="strip" role="group" aria-label="The forty-one frames of the trick"></div>
+<div class="scale"><span>frame 1</span><span>frame 41</span></div>
+
+<div class="compare" id="compare"></div>
+
+<p class="readout" id="readout">Each block is one frame of the two shots. The twelve in red are the ones showing the seven of diamonds. Tap any frame.</p>
+<p class="note">Counted by hand from the opening trick. The whole film runs to roughly 170,000 frames.</p>
+
+<script>
+var TOTAL = 41;
+var HITS = 12;              // frames showing the 7 of diamonds
+var BASE = 0.019;           // one card's expected share of a shuffled deck
+var FILM = 170000;
+
+// The twelve hits are spread through the two shots; exact positions are
+// illustrative, the count is what was measured.
+var on = {};
+for (var i = 0; i < HITS; i++) on[Math.round(i * (TOTAL - 1) / (HITS - 1))] = true;
+
+var strip = document.getElementById('strip');
+var readout = document.getElementById('readout');
+
+for (var f = 0; f < TOTAL; f++) {
+  var b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'f' + (on[f] ? ' on' : '');
+  b.dataset.f = f;
+  b.setAttribute('aria-label', 'Frame ' + (f + 1) + (on[f] ? ', seven of diamonds visible' : ''));
+  strip.appendChild(b);
+}
+
+var ROWS = [
+  { k: 'Seven of diamonds', share: HITS / TOTAL, label: '29%', hero: true },
+  { k: 'Any one card, by chance', share: BASE, label: '1.9%' },
+  { k: 'Of the whole film', share: HITS / FILM, label: '0.007%' }
+];
+
+var compare = document.getElementById('compare');
+ROWS.forEach(function (r) {
+  var el = document.createElement('div');
+  el.className = 'cmp' + (r.hero ? ' hero' : '');
+  el.innerHTML = '<span class="k">' + r.k + '</span>' +
+                 '<span class="bar"><i></i></span>' +
+                 '<span class="v">' + r.label + '</span>';
+  compare.appendChild(el);
+});
+
+function draw() {
+  var max = ROWS[0].share;
+  ROWS.forEach(function (r, i) {
+    compare.children[i].querySelector('i').style.width =
+      Math.max(r.share / max * 100, 0.6) + '%';
+  });
+}
+requestAnimationFrame(draw);
+
+strip.addEventListener('click', function (e) {
+  var b = e.target.closest('.f');
+  if (!b) return;
+  var f = Number(b.dataset.f);
+  readout.innerHTML = on[f]
+    ? 'Frame <b>' + (f + 1) + '</b> of 41 — the seven of diamonds is on screen. One of twelve such frames, about a twentieth of a second each.'
+    : 'Frame <b>' + (f + 1) + '</b> of 41 — the card is not on screen here. Twenty-nine of the forty-one frames are like this.';
+});
+</script>
+<script src="/widgets/_autosize.js"></script>
+</body>
+</html>

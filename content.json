@@ -1,0 +1,1273 @@
+{
+  "site": {
+    "name": "Oded Y. Strauss",
+    "shortName": "Oded Y. Strauss",
+    "tagline": "Interactive storyteller and activist",
+    "origin": "https://odedstrauss.com",
+    "lang": "en",
+    "description": "Interactive media by Oded Y. Strauss, Tel Aviv. WebXR, virtual tours, VR installations and data-driven storytelling for cultural and civic projects.",
+    "email": "hello@odedstrauss.com",
+    "location": "Tel Aviv, Israel",
+    "ogImage": "assets/img/og-default.jpg",
+    "epigraph": "“The limit does not exist.” — Cady Heron",
+    "social": [
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/"
+      },
+      {
+        "label": "Behance",
+        "href": "https://www.behance.net/"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/"
+      }
+    ],
+    "nav": [
+      {
+        "label": "Works",
+        "href": "/work"
+      },
+      {
+        "label": "Media Diaries",
+        "href": "/media-diaries"
+      },
+      {
+        "label": "1-hour projects",
+        "href": "/1-hour-projects"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
+    ],
+    "home": {
+      "headline": "I build things people can walk into.",
+      "statement": "Virtual tours, VR rooms, eye-tracked films and data pieces. Most of what I make is meant to be entered rather than watched, which is why it runs on this page instead of linking somewhere else.",
+      "facts": [
+        [
+          "Based",
+          "Tel Aviv"
+        ],
+        [
+          "Training",
+          "B.A. Film and Television, M.F.A. Digital Media — Steve Tisch School, Tel Aviv University"
+        ],
+        [
+          "Working in",
+          "WebXR, 360° virtual tours, Unity, interactive narrative, data visualisation"
+        ],
+        [
+          "Also",
+          "Curating, teaching, research assistance, and committee work"
+        ]
+      ],
+      "heroEmbed": {
+        "src": "https://dzc-demo.odedstrauss.com/",
+        "title": "Dizengoff Center — 360° virtual tour demo",
+        "caption": "Dizengoff Center, Tel Aviv. Twenty-five panoramas from one entrance to Lev Cinema. Drag to look around.",
+        "href": "/dizengoff-center-virtual-tour-demo"
+      }
+    },
+    "sections_blurb": {}
+  },
+  "sections": [
+    {
+      "id": "work",
+      "slug": "work",
+      "title": "Works",
+      "heading": "Works",
+      "intro": "Interactive and cinematic projects, newest first. Most of them are meant to be entered rather than watched.",
+      "layout": "register"
+    },
+    {
+      "id": "diaries",
+      "slug": "media-diaries",
+      "title": "Media Diaries",
+      "heading": "Media Diaries",
+      "intro": "I studied digital media and film. These are notes on projects, events, data and the state of the industry — some in English, some in Hebrew.",
+      "layout": "list"
+    },
+    {
+      "id": "lab",
+      "slug": "1-hour-projects",
+      "title": "1-hour projects",
+      "heading": "1-hour projects",
+      "intro": "Very short experiments. The rule is simple: build it fast, ship it, write down what broke.",
+      "layout": "grid"
+    },
+    {
+      "id": "about",
+      "slug": "about",
+      "title": "About",
+      "heading": "About",
+      "intro": "",
+      "layout": "list"
+    }
+  ],
+  "pages": [
+    {
+      "slug": "dizengoff-center-virtual-tour-demo",
+      "section": "work",
+      "title": "Dizengoff Center — Virtual tour demo",
+      "year": "2026",
+      "tags": [
+        "360°",
+        "Virtual tour",
+        "Insta360"
+      ],
+      "featured": true,
+      "description": "A 360° virtual tour demo shot inside Dizengoff Center, Tel Aviv — 25 panoramas from the entrance to Lev Cinema.",
+      "cover": "assets/img/dizengoff-cover.jpg",
+      "blocks": [
+        {
+          "type": "text",
+          "dir": "rtl",
+          "body": "אני מקים עסק חדש לסיורים וירטואליים ב-360. לאחר שצילמתי הופעות במצלמת 360, חופה עבור חברים, ראיונות משפחתיים, טיולים, וכמה פרויקטים אינטראקטיביים — אני יוצא לדרך חדשה והחלטתי לקפוץ למים העמוקים.\n\nהחלטתי שהמקום הטוב ביותר להתחיל ממנו הוא דיזנגוף סנטר — מקום שהזמן עובד לטובתו ותמיד נראה צעיר, חדשני ובועט.\n\nביקשתי ממחלקת השיווק אישור לצלם הדגמה קצרה במרחב הקניון — מאחת הכניסות ועד לקולנוע לב. משהו כמו 25 תמונות, שעה של צילום. חבר שהגיע לעזור פתר התנגדויות של בעלי חנויות וסקרנים אחרים, ומנע ניסיונות לגנוב. בצילום כל תמונה היינו צריכים להתחבא כדי לא להופיע בכולן.\n\nאחר כך פניתי למעצבת גראפית שאני מכיר כדי להסתיר מצלמות אבטחה, לטשטש פנים של מבקרים בקניון וגם כדי להעלים את החצובה עליה המצלמה עמדה.\n\nלבסוף סידרתי את התמונות בפלטפורמה לסיורים וירטואליים וחיברתי ביניהן. אתם מוזמנים לקפוץ לביקור בסנטר:"
+        },
+        {
+          "type": "embed",
+          "src": "https://dzc-demo.odedstrauss.com/",
+          "title": "Dizengoff Center 360° virtual tour",
+          "ratio": "16/9",
+          "tall": true,
+          "caption": "The tour runs inside the page. Drag to look around, click the hotspots to move between panoramas."
+        },
+        {
+          "type": "link",
+          "href": "https://dzc-demo.odedstrauss.com/",
+          "label": "Open the tour full screen"
+        },
+        {
+          "type": "credits",
+          "rows": [
+            [
+              "Camera",
+              "Insta360, tripod"
+            ],
+            [
+              "Retouching",
+              "security cameras removed, faces blurred, tripod erased"
+            ],
+            [
+              "Shoot",
+              "~25 panoramas, one hour on site"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "memory-room-vr",
+      "section": "work",
+      "title": "Memory Room — VR",
+      "year": "2025",
+      "tags": [
+        "VR",
+        "Unity",
+        "Interactive narrative"
+      ],
+      "featured": true,
+      "description": "An interactive VR experience about a memorial room, submitted as a final project in the Digital Media program at Tel Aviv University’s Tisch Film School.",
+      "cover": "assets/img/memory-room-cover.jpg",
+      "blocks": [
+        {
+          "type": "lede",
+          "body": "Memory Room (a little bit of spoilers)."
+        },
+        {
+          "type": "text",
+          "body": "“Memory Room” is an interactive virtual reality experience that was submitted as my final project in the Digital Media program at Tel Aviv University’s Tisch Film School. The project was supported by the Blavatnik Foundation.\n\n“Memory Room” features the semi-autobiographical story of myself, as a soldier who fought in the Iron Swords war in the Gaza strip. In the beginning, Ofra tells us that her son, Oded, was killed in action during the war. She organized his room as a memorial space for him — something not widely done in Israel, although very discussed by media. We, as players, can visit Oded’s room. We can play his CD collection, read his notes, wear his sunglasses, light a candle and even hear his official life story voiced by Dan Kaner. Every item in the room was made from real objects in my bedroom at my parents’ house."
+        },
+        {
+          "type": "youtube",
+          "id": "nmSn8veBRbw",
+          "title": "Memory Room — VR walkthrough"
+        },
+        {
+          "type": "text",
+          "body": "During that visit we hear Ofra’s notes regarding our behaviour — she may encourage us to do something or tell us more about Oded’s life. By walking outside the room, we learn that Oded wasn’t the first one in the family to fall in a war: Ofra’s brother, Reuveni, was killed a few decades earlier. Combining these two tragedies, we also wonder about her character as a sister and a mother, old scars and new wounds."
+        },
+        {
+          "type": "gallery",
+          "images": [
+            {
+              "src": "assets/img/memory-room-01.jpg",
+              "alt": "Memory Room — the bedroom scene"
+            },
+            {
+              "src": "assets/img/memory-room-02.jpg",
+              "alt": "Memory Room — objects on the desk"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "body": "Unlike other memorial spaces, this experience invites us to do, and by doing we reveal a hidden plot: Oded’s inside thoughts and self-disappointments, his locked-away will, Ofra’s inner thoughts while waiting for any kind of news, and the end of the story. The more we do, the more we discover.\n\nIn reality, after serving nine months in the war across three tours, I was finally able to create my project for my master’s degree. The previous concept I had pre-war was very ambitious, and titled by a few of my lecturers “the biggest project ever pitched in our program”. From that idea remained only the [demo for a futuristic apartment](/one-world-city). It was influenced by Covid-19 as the most important event of our times. After October 7th, when 1,163 people were massacred, including my high school teacher Ravid Katz, I was called for duty. Although my political views didn’t change, the artistic needs along with the attention for topics changed. So many projects were asking how to honour and remember, using mostly the physical environment. Therefore, my decision to create another project emerged.\n\nI see myself as a person who allows others to joke with him. I thought that if I chose a real soldier who died, visitors would feel uncomfortable moving objects in the room, even though it can reset with a simple press of a button. In addition, I had a unique story to tell — the will is real. I wrote it in the first days of war to ensure that my belongings would do good. By telling my squad about that paper, they stopped ignoring me and started to care for me. We came from polarized parts of society, and were united by fear, beliefs, goals, and laughter (with hours of backgammon games).\n\nFor more on the user-experience design of the project, see my [UX diaries](/memory-room)."
+        },
+        {
+          "type": "gallery",
+          "images": [
+            {
+              "src": "assets/img/memory-room-03.jpg",
+              "alt": "Memory Room — interaction detail"
+            },
+            {
+              "src": "assets/img/memory-room-04.jpg",
+              "alt": "Memory Room — candle"
+            }
+          ]
+        },
+        {
+          "type": "credits",
+          "rows": [
+            [
+              "Programme",
+              "M.F.A. Digital Media, Steve Tisch School of Film and Television, TAU"
+            ],
+            [
+              "Support",
+              "Blavatnik Foundation"
+            ],
+            [
+              "Voice",
+              "Dan Kaner"
+            ],
+            [
+              "Engine",
+              "Unity"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "past-events",
+      "section": "work",
+      "title": "Past Events",
+      "year": "2024",
+      "tags": [
+        "Curation",
+        "Festival",
+        "Exhibition"
+      ],
+      "description": "Co-directing the Digital Media exhibit and competition at the Tel Aviv International Student Film Festival, held at the Tel Aviv Cinematheque.",
+      "cover": "assets/img/past-events-cover.jpg",
+      "blocks": [
+        {
+          "type": "text",
+          "body": "In 2023 I co-directed the exhibit and competition of Digital Media at the Tel Aviv International Student Film Festival (TISFF), held at the Tel Aviv Cinematheque. Collaborating with Naomi Marchese, our team — a technical producer and ten volunteers — curated a selection of VR experiences, short animated films and video games. The role let me develop skills in managing and presenting a wide range of digital media projects."
+        },
+        {
+          "type": "gallery",
+          "images": [
+            {
+              "src": "assets/img/past-events-01.jpg",
+              "alt": "TISFF digital media exhibition"
+            },
+            {
+              "src": "assets/img/past-events-02.jpg",
+              "alt": "Visitors trying a VR piece"
+            },
+            {
+              "src": "assets/img/past-events-03.jpg",
+              "alt": "Exhibition floor"
+            },
+            {
+              "src": "assets/img/past-events-04.jpg",
+              "alt": "Competition screening"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "href": "https://www.taufilmfest.com/competition/",
+          "label": "To the exhibition"
+        }
+      ]
+    },
+    {
+      "slug": "one-world-city",
+      "section": "work",
+      "title": "One World City",
+      "year": "2024",
+      "tags": [
+        "VR",
+        "Trans-platform",
+        "Speculative"
+      ],
+      "description": "A trans-platform experience: the global population moves to one city, reducing the footprint of mankind to a limited, ultra-comfortable space.",
+      "cover": "assets/img/owc-cover.jpg",
+      "blocks": [
+        {
+          "type": "lede",
+          "body": "What if we could solve the global environmental crisis by radically changing our lifestyle?"
+        },
+        {
+          "type": "text",
+          "body": "One World City (OWC) is a trans-platform experience demonstrating a unique situation: the global population moves to one city, reducing the footprint of mankind to a limited, ultra-comfortable space."
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Commercial for the real estate project",
+            "TV sitcom",
+            "Tablet app for writing songs with generative AI",
+            "VR experience",
+            "All of the above in an exhibition space"
+          ]
+        },
+        {
+          "type": "embed",
+          "src": "https://www-ccv.adobe.io/v1/player/ccv/RxEzppYxu86/embed?bgcolor=%23191919&lazyLoading=true&api_key=BehancePro2View",
+          "title": "One World City — first VR demo",
+          "ratio": "16/9",
+          "caption": "First VR demo.",
+          "note": "Adobe-hosted video. Re-host before cancelling the Adobe plan."
+        },
+        {
+          "type": "gallery",
+          "images": [
+            {
+              "src": "assets/img/owc-01.jpg",
+              "alt": "Initial blocking for the apartment model in Miro",
+              "caption": "Initial blocking for the apartment model in Miro"
+            },
+            {
+              "src": "assets/img/owc-02.jpg",
+              "alt": "Narrative timeline from 2020 to 2100",
+              "caption": "Narrative timeline: from 2020 to 2100"
+            },
+            {
+              "src": "assets/img/owc-03.jpg",
+              "alt": "User flow through the experience space",
+              "caption": "User’s flow in the experience space — from entry to end"
+            },
+            {
+              "src": "assets/img/owc-04.jpg",
+              "alt": "User flow explaining the narrative",
+              "caption": "User flow — explaining the narrative"
+            }
+          ]
+        },
+        {
+          "type": "credits",
+          "rows": [
+            [
+              "Tools",
+              "Unity, generative AI tools, Meta Quest, Miro"
+            ],
+            [
+              "Context",
+              "M.F.A. final project, Tel Aviv University"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "exodus",
+      "section": "work",
+      "title": "Exodus",
+      "year": "2023",
+      "tags": [
+        "Game",
+        "Unity",
+        "AI NPCs"
+      ],
+      "description": "An open-world PC game that lets us talk with the Israelites before crossing the Red Sea. Our mission is to find Moses’ staff by exposing the undocumented stories of the subaltern people. Made with Unity.",
+      "cover": "assets/img/exodus-cover.jpg",
+      "blocks": [
+        {
+          "type": "text",
+          "body": "Exodus is an open-world PC game that lets us talk with the Israelites before crossing the Red Sea. Our mission is to find Moses’ staff by exposing the undocumented stories of the subaltern people. Made with Unity."
+        },
+        {
+          "type": "credits",
+          "rows": [
+            [
+              "Oded Y. Strauss",
+              "Product management, concept, script, Unity design and AI"
+            ],
+            [
+              "Elior Zilberstein",
+              "Programming, environment design"
+            ],
+            [
+              "Dor Atias",
+              "3D modelling, environment design"
+            ],
+            [
+              "Voices",
+              "Replica"
+            ]
+          ]
+        },
+        {
+          "type": "embed",
+          "src": "https://www-ccv.adobe.io/v1/player/ccv/4sfjw43Stj9/embed?bgcolor=%23191919&lazyLoading=true&api_key=BehancePro2View",
+          "title": "Exodus — gameplay",
+          "ratio": "16/9",
+          "note": "Adobe-hosted video. Re-host before cancelling the Adobe plan."
+        },
+        {
+          "type": "gallery",
+          "images": [
+            {
+              "src": "assets/img/exodus-01.jpg",
+              "alt": "Exodus — environment"
+            },
+            {
+              "src": "assets/img/exodus-02.jpg",
+              "alt": "Exodus — NPC conversation"
+            },
+            {
+              "src": "assets/img/exodus-03.jpg",
+              "alt": "Exodus — desert scene"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "mvp",
+      "section": "work",
+      "title": "MVP",
+      "year": "2024",
+      "tags": [
+        "Experimental film",
+        "Research"
+      ],
+      "description": "An experimental short film about the single frame as the atom of cinema — 840 frames, each the most memorable moment of every film I have seen.",
+      "cover": "assets/img/mvp-cover.jpg",
+      "blocks": [
+        {
+          "type": "text",
+          "body": "MVP is an experimental short film. It raises the discussion about the single frame as the atom of cinema. The last version, unavailable due to film festival applications, is a short film containing 840 frames, where each frame shows the most memorable moment of every film I have ever seen.\n\nThe version below (777 frames) has been the subject of cognitive viewer research, examining which frames are the most recognizable and why. Some parameters proved to be the most effective. As a written seminar submitted to Dr. Gal Raz, it received an A+ grade.\n\nMVP was a solo, long-term side project from 2021 to 2024."
+        },
+        {
+          "type": "embed",
+          "src": "https://www-ccv.adobe.io/v1/player/ccv/Tr6MDR7wtvU/embed?bgcolor=%23191919&lazyLoading=true&api_key=BehancePro2View",
+          "title": "MVP (2023)",
+          "ratio": "16/9",
+          "caption": "MVP (2023). For the intended frame rate, download the file rather than streaming it.",
+          "note": "Adobe-hosted video. Re-host before cancelling the Adobe plan."
+        },
+        {
+          "type": "text",
+          "body": "For more about this project and what came out of it, see [Moving to the Digital Age](/moving-to-the-digital-age-ba-mfa) and [1022 Films](/1022-films)."
+        }
+      ]
+    },
+    {
+      "slug": "rokus-basilisk",
+      "section": "work",
+      "title": "Roko’s Basilisk",
+      "year": "2022",
+      "tags": [
+        "Eye tracking",
+        "Interactive film",
+        "Unity"
+      ],
+      "description": "A short interactive film operated by a Tobii eye-tracking camera, inspired by a philosophical question about technology and morals.",
+      "cover": "assets/img/roko-cover.jpg",
+      "blocks": [
+        {
+          "type": "text",
+          "body": "Inspired by [a philosophical question about technology and morals](https://en.wikipedia.org/wiki/Roko%27s_basilisk), I created a short interactive film operated by a Tobii eye-tracking camera.\n\nIn that film we are in the role of John Cohen, an Israeli “John Doe”, trying to figure out how we got into that investigation chair."
+        },
+        {
+          "type": "youtube",
+          "id": "8UrkKGNJp20",
+          "title": "Roko’s Basilisk — part 1",
+          "caption": "חלק 1 בחוויה האינטראקטיבית"
+        },
+        {
+          "type": "text",
+          "body": "Using the Tobii eye tracker, we can navigate to see different parts of the frame — like a head turn — and choose the path of the narrative we wish to watch, as a branching story."
+        },
+        {
+          "type": "gallery",
+          "images": [
+            {
+              "src": "assets/img/roko-01.jpg",
+              "alt": "Roko’s Basilisk — the chair"
+            },
+            {
+              "src": "assets/img/roko-02.jpg",
+              "alt": "Roko’s Basilisk — eye tracking setup"
+            }
+          ]
+        },
+        {
+          "type": "credits",
+          "rows": [
+            [
+              "Oded Y. Strauss",
+              "Script, production, directing, editing, game design"
+            ],
+            [
+              "Reli Magnezi",
+              "Level design"
+            ],
+            [
+              "Technology",
+              "Unity (C#), Insta360, Tobii SDK (camera required)"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "songsnpic",
+      "section": "work",
+      "title": "שירים בתמונות",
+      "year": "2016",
+      "lang": "he",
+      "tags": [
+        "תערוכה",
+        "צילום",
+        "שירה"
+      ],
+      "description": "תערוכת תמונות ושירים שנוצרה בסוף ימי התיכון והוצגה לראשונה בחנוכה 2017.",
+      "cover": "assets/img/songsnpic-cover.jpg",
+      "blocks": [
+        {
+          "type": "text",
+          "dir": "rtl",
+          "body": "שירים בתמונות היא תערוכת תמונות ושירים שיצרתי בסוף ימי התיכון לקראת הגיוס לצבא, והוצגה לראשונה בחנוכה 2017.\n\nהיא מהווה ביטוי למחשבות של נער שמתרוצץ בפינות שונות בארץ ומוחו סוער בין אופטימיות לדאגה, בין רמזים עקיפים לאלמנטים מהטבע, בין פירות בשלים ובוסרות אישית.\n\nהתערוכה הוצגה באזור עמק יזרעאל בכמה גלריות."
+        },
+        {
+          "type": "gallery",
+          "columns": 3,
+          "images": [
+            {
+              "src": "assets/img/songsnpic-01.jpg",
+              "alt": "תמונה מהתערוכה"
+            },
+            {
+              "src": "assets/img/songsnpic-02.jpg",
+              "alt": "תמונה מהתערוכה"
+            },
+            {
+              "src": "assets/img/songsnpic-03.jpg",
+              "alt": "תמונה מהתערוכה"
+            },
+            {
+              "src": "assets/img/songsnpic-04.jpg",
+              "alt": "תמונה מהתערוכה"
+            },
+            {
+              "src": "assets/img/songsnpic-05.jpg",
+              "alt": "תמונה מהתערוכה"
+            },
+            {
+              "src": "assets/img/songsnpic-06.jpg",
+              "alt": "תמונה מהתערוכה"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "old-works",
+      "section": "work",
+      "title": "Old Works",
+      "year": "1995",
+      "tags": [
+        "Archive",
+        "Editing",
+        "Data video"
+      ],
+      "description": "Fifteen years of work in one page — from a garage olive-oil commercial in 2012 to interactive art in Unity.",
+      "cover": "assets/img/old-works-cover.jpg",
+      "blocks": [
+        {
+          "type": "text",
+          "body": "Do you believe in the power of development and the persistence of habit? What about the impact of long-term dedication, similar to how interest compounds over time?\n\nIf so, you’ve come to the right page. Oded has been creating art for 15 years. In 2023 his dedication was recognized with a scholarship. Here is a selection of the works."
+        },
+        {
+          "type": "image",
+          "src": "assets/img/old-works-scholarship.jpg",
+          "alt": "Megiddo Regional Council scholarship",
+          "caption": "2024. Megiddo Regional Council granted a scholarship as an artist for 15 years."
+        },
+        {
+          "type": "embed",
+          "src": "https://www-ccv.adobe.io/v1/player/ccv/SWHvjhNsytv/embed?bgcolor=%23191919&lazyLoading=true&api_key=BehancePro2View",
+          "title": "1948 interactive artwork",
+          "ratio": "16/9",
+          "caption": "2022. After learning the basics of interactions, I made this artwork to reflect the events of 1948. It depicts the chaotic movement of people and Ben Gurion’s declaration of independence. I also designed a Hebrew font based on the Star of David. Completed within three months of starting to learn Unity.",
+          "note": "Adobe-hosted video. Re-host before cancelling the Adobe plan."
+        },
+        {
+          "type": "embed",
+          "src": "https://www-ccv.adobe.io/v1/player/ccv/8RHXCi_tsAC/embed?bgcolor=%23191919&lazyLoading=true&api_key=BehancePro2View",
+          "title": "Split screen experiment",
+          "ratio": "16/9",
+          "caption": "2020. The split screen is an underused visual tool in Israeli cinema, and using it for more than two simultaneous scenes is rarer still. My approach aims to be both clear and experimental.",
+          "note": "Adobe-hosted video. Re-host before cancelling the Adobe plan."
+        },
+        {
+          "type": "embed",
+          "src": "https://www-ccv.adobe.io/v1/player/ccv/BasGreE5ZCQ/embed?bgcolor=%23191919&lazyLoading=true&api_key=BehancePro2View",
+          "title": "Cinema without cameras",
+          "ratio": "16/9",
+          "caption": "2020. I was fascinated by the idea of making cinema without physical cameras. Limited by budget and outdated equipment, I made videos out of existing media. I later found that this is a fundamental idea in digital art: recombining media, yours or others’, into a new creation.",
+          "note": "Adobe-hosted video. Re-host before cancelling the Adobe plan."
+        },
+        {
+          "type": "embed",
+          "src": "https://www-ccv.adobe.io/v1/player/ccv/NM_vcx6e83_/embed?bgcolor=%23191919&lazyLoading=true&api_key=BehancePro2View",
+          "title": "Running bars — sizes of cities in Israel",
+          "ratio": "16/9",
+          "caption": "2020. I discovered a video format called running bars and watched several a day for weeks. Most were about army sizes or best-selling products outside my country, so I made one about the sizes of cities in Israel. The census updates roughly every five years, which made it hard. About a month of work — and it shows things like the rise and fall of Haifa.",
+          "note": "Adobe-hosted video. Re-host before cancelling the Adobe plan."
+        },
+        {
+          "type": "embed",
+          "src": "https://www-ccv.adobe.io/v1/player/ccv/Fvd6AqHCNJY/embed?bgcolor=%23191919&lazyLoading=true&api_key=BehancePro2View",
+          "title": "Forrest Gump re-cut as horror",
+          "ratio": "16/9",
+          "caption": "2018. I found a trend called “editing is everything”, where people re-cut films into different genres. I chose Forrest Gump, a film with plenty of unsettling moments, and reimagined it as a mid-west horror film.",
+          "note": "Adobe-hosted video. Re-host before cancelling the Adobe plan."
+        },
+        {
+          "type": "embed",
+          "src": "https://www-ccv.adobe.io/v1/player/ccv/8tF9hSz-hog/embed?bgcolor=%23191919&lazyLoading=true&api_key=BehancePro2View",
+          "title": "Family at the sea",
+          "ratio": "16/9",
+          "caption": "2014. One day my extended family went to the sea. I noticed my cousin digging a hole while my father watched for a moment before walking away. At home I started experimenting with the digital image — no formal training, pure experimentation. Breaking away from realism felt avant-garde.",
+          "note": "Adobe-hosted video. Re-host before cancelling the Adobe plan."
+        },
+        {
+          "type": "embed",
+          "src": "https://www-ccv.adobe.io/v1/player/ccv/Vrr7IemfBPy/embed?bgcolor=%23191919&lazyLoading=true&api_key=BehancePro2View",
+          "title": "Olive oil commercial",
+          "ratio": "16/9",
+          "caption": "2012. My parents owned a small packing factory for olive oil. When I was around 15 they asked me to make a short commercial. I aimed for the vibe of a fast, efficient industrial operation while keeping its roots as a family business in our garage. Naturally, not many people saw it.",
+          "note": "Adobe-hosted video. Re-host before cancelling the Adobe plan."
+        }
+      ]
+    },
+    {
+      "slug": "about-1",
+      "section": "about",
+      "title": "About",
+      "year": "",
+      "tags": [],
+      "description": "Oded Yaniv (Edy) Strauss is a digital storyteller from the Jezreel Valley, now based in Tel Aviv.",
+      "cover": "assets/img/about-cover.jpg",
+      "blocks": [
+        {
+          "type": "lede",
+          "body": "Oded Yaniv (Edy) Strauss is a digital storyteller from the Jezreel Valley, now based in Tel Aviv."
+        },
+        {
+          "type": "text",
+          "body": "Roaming from filmmaking, curating for festivals and cinema clubs, to the other end of making AI art, rolling out as a creative technologist and UX designer. His work deals with love, fear, the desire for inventions, and the quest for the unknown future.\n\nAfter graduating from Tel Aviv University with a B.A. at the Steve Tisch School of Film and Television, he continued to an M.F.A. in Digital Media directing and producing. While doing so, Oded was a research assistant to Dr. David Gurevitz on his book “Kafka’s America” (2024), a teaching assistant at the College of Management, and a representative of the students’ association at TAU.\n\nRecently he completed two projects: the first is about torture, using a DIY chair, 180-degree film and an eye-tracking controller; the second is an experimental short film containing an enormous number of frames, testing the ability to recognize content and to appreciate the frame as the basic unit of cinema.\n\nAlthough Oded feels festivals are his territory — he won two prizes for a short film at the age of 18 — his other nature is experimenting with new ideas about the cinematic world, whether messing with the shape and length of frames or with the affordances of XR and AI.\n\nAs a game developer, Oded led a team to create [Exodus](/exodus), a short video game where we save the Israelites by finding Moses’ staff through conversations with AI NPCs who each tell their version of the biblical exodus. It is not his first time as a team leader."
+        },
+        {
+          "type": "credits",
+          "rows": [
+            [
+              "Roles",
+              "From scriptwriting to code writing and everything in between — turning an idea or a dream into a meaningful experience for a broad audience"
+            ],
+            [
+              "Tools",
+              "Adobe Suite, Unity, C#, Figma, multiple AI tools, UX methods"
+            ]
+          ]
+        },
+        {
+          "type": "gallery",
+          "columns": 3,
+          "images": [
+            {
+              "src": "assets/img/about-01.jpg",
+              "alt": "Oded at work"
+            },
+            {
+              "src": "assets/img/about-02.jpg",
+              "alt": "On set"
+            },
+            {
+              "src": "assets/img/about-03.jpg",
+              "alt": "Exhibition"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "activism",
+      "section": "about",
+      "title": "Activism",
+      "year": "2024",
+      "tags": [
+        "Community",
+        "Research",
+        "Teaching"
+      ],
+      "description": "Activism and community service: student association work at TAU, COVID-era community theatre, research with Dr. David Gurevitz, and teaching scholarships.",
+      "cover": "assets/img/activism-cover.jpg",
+      "blocks": [
+        {
+          "type": "lede",
+          "body": "My journey in activism and community service has been a defining aspect of my life."
+        },
+        {
+          "type": "heading",
+          "body": "Student Association at Tel Aviv University"
+        },
+        {
+          "type": "text",
+          "body": "2023–2024: representative of the Arts faculty, member of the funding committee.\n\n2024–2025: chairman of the Committee for the Victims of October 7th and the War."
+        },
+        {
+          "type": "heading",
+          "body": "Local entertainment team during COVID-19"
+        },
+        {
+          "type": "text",
+          "body": "During COVID-19 I joined a local group dedicated to lifting spirits in our community. We produced and filmed children’s plays and sketches for our town’s residents."
+        },
+        {
+          "type": "heading",
+          "body": "Work with David Gurevitz"
+        },
+        {
+          "type": "text",
+          "body": "I worked as a research assistant for Dr. David Gurevitz on his book “Kafka’s America”, published by HaKibbutz HaMeuchad in 2024. In 2026 we published “The Revolution Will Not Be Televised”, a book about media and Trumpism, published by Evrit Books. I wrote a chapter about social media, AI and memes, and the way Donald J. Trump uses and shapes them."
+        },
+        {
+          "type": "heading",
+          "body": "Scholarships"
+        },
+        {
+          "type": "text",
+          "body": "During four years of academic study I received several scholarships that let me give back to the community.\n\n2020: Perach — I taught science to children.\n\n2021–2022: Walking Together — tutoring freshmen at TAU.\n\n2023–2024: AICEO — lecturing about cinema to elderly people as part of the Jeckes Organization, where I still help from time to time.\n\nMy contributions were further recognized through scholarships awarded for my service in the IDF as an ex-combat soldier. In 2014, right after Operation Protective Edge, I dedicated half a year to pre-military service in Ashdod as a youth movement guide."
+        },
+        {
+          "type": "gallery",
+          "columns": 3,
+          "images": [
+            {
+              "src": "assets/img/activism-01.jpg",
+              "alt": "Community work"
+            },
+            {
+              "src": "assets/img/activism-02.jpg",
+              "alt": "Student association"
+            },
+            {
+              "src": "assets/img/activism-03.jpg",
+              "alt": "Lecture"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "virtual-tours",
+      "section": "lab",
+      "title": "A Virtual Tour",
+      "year": "2026",
+      "tags": [
+        "360°",
+        "Marzipano",
+        "Kuula"
+      ],
+      "featured": true,
+      "description": "A one-hour attempt at a 360° virtual tour of my apartment — first in Kuula, then rebuilt free in Marzipano.",
+      "cover": "assets/img/virtual-tour-cover.jpg",
+      "blocks": [
+        {
+          "type": "quote",
+          "body": "Virtual tours are interactive, 360-degree digital environments that bring physical spaces directly to your screen. They allow visitors to freely navigate between rooms and uncover hidden details through clickable hotspots.",
+          "cite": "Gemini"
+        },
+        {
+          "type": "text",
+          "body": "This is a very short attempt to make a virtual tour of my apartment. First I used Kuula and it worked really well, until I had to pay $20 a month to let you tour it. Luckily Marzipano is free."
+        },
+        {
+          "type": "embed",
+          "src": "https://yehudit1.netlify.app/",
+          "title": "Yehudit Boulevard — virtual tour",
+          "ratio": "16/9",
+          "tall": true,
+          "caption": "Drag to look around.",
+          "note": null
+        },
+        {
+          "type": "gallery",
+          "columns": 3,
+          "images": [
+            {
+              "src": "assets/img/vt-01.jpg",
+              "alt": "Panorama from Kuula",
+              "caption": "from: Kuula"
+            },
+            {
+              "src": "assets/img/vt-02.jpg",
+              "alt": "Panorama"
+            },
+            {
+              "src": "assets/img/vt-03.jpg",
+              "alt": "Panorama"
+            }
+          ]
+        },
+        {
+          "type": "credits",
+          "rows": [
+            [
+              "Equipment",
+              "Insta360 X5 + tripod"
+            ],
+            [
+              "Software",
+              "Insta360 Studio, Kuula / Marzipano, Netlify"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "jeanne-dielman-floor-plan",
+      "section": "lab",
+      "title": "Jeanne Dielman — Floor Plan",
+      "year": "2026",
+      "tags": [
+        "Reconstruction",
+        "Cinema",
+        "Floor plan"
+      ],
+      "description": "A reconstructed floor plan of the apartment at 23 Quai du Commerce, built from the film itself.",
+      "cover": "assets/img/lab-jeanne.jpg",
+      "blocks": [
+        {
+          "type": "embed",
+          "src": "https://jeanne-dielman.netlify.app/",
+          "title": "Jeanne Dielman — floor plan",
+          "tall": true,
+          "caption": "Running live. Use the full-screen button if it feels cramped.",
+          "note": "Check this URL — I guessed it from the project name. Replace it with the real one if it differs."
+        },
+        {
+          "type": "todo",
+          "body": "Paste the write-up for this project here, or move it into texts/<name>.md and set \"text\" on this page."
+        }
+      ]
+    },
+    {
+      "slug": "the-potatodyssey",
+      "section": "lab",
+      "title": "The Potatodyssey",
+      "year": "2026",
+      "tags": [],
+      "description": "A one-hour experiment.",
+      "cover": "assets/img/lab-potato.jpg",
+      "blocks": [
+        {
+          "type": "todo",
+          "body": "Paste the text from odedstrauss.com/the-potatodyssey here."
+        }
+      ]
+    },
+    {
+      "slug": "the-cutting-room",
+      "section": "lab",
+      "title": "The Cutting Room",
+      "year": "2026",
+      "tags": [
+        "Data visualization",
+        "Cinema",
+        "Charts"
+      ],
+      "description": "Film data visualisation — Best Picture budgets and directors’ runtimes. The charts are live; drag and hover them.",
+      "cover": "assets/img/lab-cutting-room.jpg",
+      "blocks": [
+        {
+          "type": "embed",
+          "src": "https://the-cutting-room.netlify.app/",
+          "title": "The Cutting Room",
+          "tall": true,
+          "caption": "Running live. Use the full-screen button if it feels cramped.",
+          "note": "Check this URL — I guessed it from the project name. Replace it with the real one if it differs."
+        },
+        {
+          "type": "todo",
+          "body": "Paste the write-up for this project here, or move it into texts/<name>.md and set \"text\" on this page."
+        }
+      ]
+    },
+    {
+      "slug": "360-to-vr",
+      "section": "lab",
+      "title": "360 To VR",
+      "year": "2026",
+      "tags": [
+        "WebXR",
+        "360°"
+      ],
+      "description": "Turning 360° footage into a VR-ready experience.",
+      "cover": "assets/img/lab-360vr.jpg",
+      "blocks": [
+        {
+          "type": "todo",
+          "body": "Paste the text from odedstrauss.com/360-to-vr here."
+        }
+      ]
+    },
+    {
+      "slug": "crowdsourced-photogrammetry",
+      "section": "lab",
+      "title": "Crowdsourced Photogrammetry",
+      "year": "2026",
+      "tags": [
+        "Photogrammetry",
+        "3D"
+      ],
+      "description": "Building 3D models from crowd-sourced photographs.",
+      "cover": "assets/img/lab-photogrammetry.jpg",
+      "blocks": [
+        {
+          "type": "todo",
+          "body": "Paste the text from odedstrauss.com/crowdsourced-photogrammetry here. A model-viewer embed would work well on this page."
+        }
+      ]
+    },
+    {
+      "slug": "punch-analyzer",
+      "section": "lab",
+      "title": "Punch Analyzer",
+      "year": "2026",
+      "tags": [
+        "Analysis",
+        "Comedy",
+        "Charts"
+      ],
+      "description": "A web system for analysing comedy content. The dashboard runs in the page.",
+      "cover": "assets/img/lab-punch.jpg",
+      "blocks": [
+        {
+          "type": "embed",
+          "src": "https://punch-analyzer.netlify.app/",
+          "title": "Punch Analyzer",
+          "tall": true,
+          "caption": "Running live. Use the full-screen button if it feels cramped.",
+          "note": "Check this URL — I guessed it from the project name. Replace it with the real one if it differs."
+        },
+        {
+          "type": "todo",
+          "body": "Paste the write-up for this project here, or move it into texts/<name>.md and set \"text\" on this page."
+        }
+      ]
+    },
+    {
+      "slug": "black-box-experiment",
+      "section": "lab",
+      "title": "Black Box Experiment",
+      "year": "2026",
+      "tags": [],
+      "description": "A one-hour experiment.",
+      "cover": "assets/img/lab-blackbox.jpg",
+      "blocks": [
+        {
+          "type": "todo",
+          "body": "Paste the text from odedstrauss.com/black-box-experiment here."
+        }
+      ]
+    },
+    {
+      "slug": "donttrusttheirwords",
+      "section": "diaries",
+      "title": "פערי דיווח",
+      "year": "2026",
+      "lang": "he",
+      "description": "רשימה על מדיה ונתונים.",
+      "blocks": [
+        {
+          "type": "todo",
+          "dir": "rtl",
+          "body": "העתק לכאן את הטקסט מ-odedstrauss.com/donttrusttheirwords"
+        }
+      ]
+    },
+    {
+      "slug": "16a4650c788ab5",
+      "section": "diaries",
+      "title": "הבעיה עם קרנות הקולנוע",
+      "year": "2026",
+      "lang": "he",
+      "description": "רשימה על מימון קולנוע בישראל.",
+      "blocks": [
+        {
+          "type": "todo",
+          "dir": "rtl",
+          "body": "העתק לכאן את הטקסט מהעמוד המקורי. שווה לשנות את ה-slug למשהו קריא — ולהוסיף redirect מהישן."
+        }
+      ]
+    },
+    {
+      "slug": "art-basterds",
+      "section": "diaries",
+      "title": "ממזרים ללא כבוד",
+      "year": "2026",
+      "lang": "he",
+      "description": "רשימה.",
+      "blocks": [
+        {
+          "type": "todo",
+          "dir": "rtl",
+          "body": "העתק לכאן את הטקסט מ-odedstrauss.com/art-basterds"
+        }
+      ]
+    },
+    {
+      "slug": "media-visions-further-other-and-completely-new",
+      "section": "diaries",
+      "title": "Further, Other and Completely New",
+      "year": "2026",
+      "description": "A model for telling real innovation from the same thing in green. Entertainment is a solved problem; what is the vision now?",
+      "blocks": [],
+      "text": "media-visions",
+      "tags": [
+        "Theory",
+        "Media"
+      ]
+    },
+    {
+      "slug": "360",
+      "section": "diaries",
+      "title": "מחאה ב-360 מעלות",
+      "year": "2026",
+      "lang": "he",
+      "description": "רשימה על צילום מחאה ב-360.",
+      "blocks": [
+        {
+          "type": "todo",
+          "dir": "rtl",
+          "body": "העתק לכאן את הטקסט. דף שמתאים לבלוק embed של סיור 360."
+        }
+      ]
+    },
+    {
+      "slug": "heritageoffilm",
+      "section": "diaries",
+      "title": "ירושת הפילם – למה הקולנוע הישראלי נראה ככה",
+      "year": "2026",
+      "lang": "he",
+      "description": "רשימה על הקולנוע הישראלי.",
+      "blocks": [
+        {
+          "type": "todo",
+          "dir": "rtl",
+          "body": "העתק לכאן את הטקסט מ-odedstrauss.com/heritageoffilm"
+        }
+      ]
+    },
+    {
+      "slug": "169c575dd48513",
+      "section": "diaries",
+      "title": "Mechanical Fathers and Virtual Sons",
+      "year": "2026",
+      "description": "A diary entry.",
+      "blocks": [
+        {
+          "type": "todo",
+          "body": "Paste the text from the original page here. Worth renaming this slug to something readable and adding a redirect from the old one."
+        }
+      ]
+    },
+    {
+      "slug": "hot-2026",
+      "section": "diaries",
+      "title": "הוט 2026: כנס האופטימיות של הקולנוע",
+      "year": "2026",
+      "lang": "he",
+      "description": "דו\"ח מאירוע חשיפת סרטי 2026 של הוט סינמה — מה מפיצים מבטיחים לשנה הבאה.",
+      "blocks": [],
+      "text": "hot-2026",
+      "tags": [
+        "הפצה",
+        "תעשייה",
+        "אירוע"
+      ]
+    },
+    {
+      "slug": "pureimage",
+      "section": "diaries",
+      "title": "בעקבות התמונה הטהורה",
+      "year": "2026",
+      "lang": "he",
+      "description": "רשימה.",
+      "blocks": [
+        {
+          "type": "todo",
+          "dir": "rtl",
+          "body": "העתק לכאן את הטקסט מ-odedstrauss.com/pureimage"
+        }
+      ]
+    },
+    {
+      "slug": "memory-room",
+      "section": "diaries",
+      "title": "Memory Room — UX diaries",
+      "year": "2025",
+      "description": "The UX and world-building behind Memory Room — the candle, the notes, the shirts, the QR code in VR and the balls you shoot by speaking.",
+      "blocks": [],
+      "text": "memory-room",
+      "tags": [
+        "UX",
+        "VR",
+        "Unity"
+      ]
+    },
+    {
+      "slug": "multimedia-auschwitz-lfgiohio",
+      "section": "diaries",
+      "title": "מולטימדיה, אושוויץ וילדות מאוהיו",
+      "year": "2026",
+      "lang": "he",
+      "description": "רשימה.",
+      "blocks": [
+        {
+          "type": "todo",
+          "dir": "rtl",
+          "body": "העתק לכאן את הטקסט מהעמוד המקורי."
+        }
+      ]
+    },
+    {
+      "slug": "jaguar-411-the-secrets-of-ar",
+      "section": "diaries",
+      "title": "Jaguar 411: The Secrets of AR",
+      "year": "2026",
+      "description": "An AR mystery game played over WhatsApp, and what a sixteenth of a trigger image can unlock.",
+      "blocks": [],
+      "text": "jaguar-411",
+      "tags": [
+        "AR",
+        "Snapchat",
+        "Game"
+      ]
+    },
+    {
+      "slug": "information-and-media-it-sounds-better-in-hebrew",
+      "section": "diaries",
+      "title": "Information and Media — It Sounds Better in Hebrew",
+      "year": "2026",
+      "description": "A diary entry.",
+      "blocks": [
+        {
+          "type": "todo",
+          "body": "Paste the text from the original page here."
+        }
+      ]
+    },
+    {
+      "slug": "1022-films",
+      "section": "diaries",
+      "title": "1022 Films",
+      "year": "2025",
+      "description": "Notes connected to the MVP project.",
+      "blocks": [
+        {
+          "type": "todo",
+          "body": "Paste the text from the original page here. Link back to /mvp."
+        }
+      ]
+    },
+    {
+      "slug": "all-about-those-hills",
+      "section": "diaries",
+      "title": "על הרים וגבעות",
+      "year": "2025",
+      "lang": "he",
+      "description": "למה כל משחק מתחיל בגבעות מתונות, ומה זה אומר על הנוף שרוב הישראלים חיים בו.",
+      "blocks": [],
+      "text": "all-about-those-hills",
+      "tags": [
+        "משחקים",
+        "נוף",
+        "עיצוב עולם"
+      ]
+    },
+    {
+      "slug": "crafting-cinematic-magic",
+      "section": "diaries",
+      "title": "Crafting Cinematic Magic",
+      "year": "2025",
+      "description": "Counting frames in Now You See Me to find out how a film makes an entire audience pick the same card.",
+      "blocks": [],
+      "text": "crafting-cinematic-magic",
+      "tags": [
+        "Cognition",
+        "Cinema",
+        "Data"
+      ]
+    },
+    {
+      "slug": "how-to-watch-a-film",
+      "section": "diaries",
+      "title": "How to watch a film",
+      "year": "2024",
+      "description": "On the perfect cinema experience, Scorsese’s demands, and the exit sign shining under the screen.",
+      "blocks": [],
+      "text": "how-to-watch-a-film",
+      "tags": [
+        "Exhibition",
+        "Cinema"
+      ]
+    },
+    {
+      "slug": "moving-to-the-digital-age-ba-mfa",
+      "section": "diaries",
+      "title": "Moving to the Digital Age",
+      "year": "2025",
+      "description": "Four ways to study film that film studies does not teach: data, interfaces, cognitive experiments and design.",
+      "blocks": [],
+      "text": "moving-to-the-digital-age",
+      "tags": [
+        "Research",
+        "Method",
+        "Data"
+      ]
+    },
+    {
+      "slug": "rokus-basilisk-1",
+      "section": "diaries",
+      "title": "Roko’s Basilisk — diary",
+      "year": "2022",
+      "description": "The UX thinking behind the eye-tracked interrogation chair — and why the music loops every nine seconds.",
+      "blocks": [],
+      "text": "rokus-basilisk-diary",
+      "tags": [
+        "UX",
+        "Eye tracking"
+      ]
+    }
+  ],
+  "redirects": [
+    [
+      "/about",
+      "/about",
+      200
+    ],
+    [
+      "/work",
+      "/work",
+      200
+    ]
+  ]
+}

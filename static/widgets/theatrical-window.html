@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The theatrical window</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;600&display=swap">
+<style>
+  :root { --paper:#FAF8F4; --ink:#121316; --ink-2:#474C53; --ink-3:#757A81;
+          --rule:#D4CFC3; --off:#E6E2DA; --mark:#8C2230; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:1.1rem 1.2rem 1.3rem; background:var(--paper); color:var(--ink);
+         font:400 15px/1.55 "Spectral",Georgia,serif; }
+  .chart { position:relative; }
+  svg { width:100%; height:auto; display:block; overflow:visible; }
+  .grid line { stroke:var(--off); stroke-width:1; }
+  .axis text { fill:var(--ink-3); font-size:11px; font-family:"Spectral",serif; }
+  .bar { fill:var(--ink); transition:fill .15s; }
+  .bar:hover, .bar.sel { fill:var(--mark); }
+  .mark { stroke:var(--mark); stroke-width:1; stroke-dasharray:3 3; }
+  .readout { margin-top:.9rem; padding-top:.8rem; border-top:1px solid var(--rule);
+             color:var(--ink-2); min-height:3.2em; }
+  .readout b { color:var(--ink); font-weight:600; }
+  .empty { border:1px solid var(--rule); border-left:2px solid var(--mark);
+           background:#F2EFE8; padding:1rem 1.1rem; color:var(--ink-2); font-size:.92em; }
+  .empty code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.9em;
+                background:var(--off); padding:.05rem .3rem; }
+  .empty p { margin:0 0 .6rem; } .empty p:last-child { margin:0; }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+<p class="readout" id="readout"></p>
+
+<script>
+var W = 760, H = 260, PADL = 30, PADB = 26, PADT = 8;
+var root = document.getElementById('root');
+var readout = document.getElementById('readout');
+
+fetch('/data/theatrical-window.csv')
+  .then(function (r) { if (!r.ok) throw new Error('no file'); return r.text(); })
+  .then(function (txt) {
+    var rows = txt.trim().split('\n').slice(1)
+      .map(function (l) {
+        var c = l.split(',');
+        return { year: +c[0], film: (c[1] || '').trim(), weeks: +c[2] };
+      })
+      .filter(function (d) { return d.year && d.weeks; });
+    if (!rows.length) throw new Error('empty');
+    draw(rows);
+  })
+  .catch(function () { empty(); });
+
+function empty() {
+  root.innerHTML =
+    '<div class="empty">' +
+    '<p>This chart draws itself from <code>static/data/theatrical-window.csv</code>, which is still empty.</p>' +
+    '<p>Paste the seminar table in as <code>year,film,weeks</code> — one row per year, 1980 to 2024 — and the chart appears on the next build. I have not invented numbers to fill it.</p>' +
+    '</div>';
+  readout.textContent = '';
+}
+
+function draw(rows) {
+  var maxW = Math.max.apply(null, rows.map(function (d) { return d.weeks; }));
+  var y0 = rows[0].year, y1 = rows[rows.length - 1].year;
+  var bw = (W - PADL) / rows.length;
+
+  var ticks = [0, Math.round(maxW / 2), maxW];
+  var svg = ['<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Theatrical window length by year">'];
+
+  svg.push('<g class="grid">');
+  ticks.forEach(function (t) {
+    var y = PADT + (1 - t / maxW) * (H - PADT - PADB);
+    svg.push('<line x1="' + PADL + '" x2="' + W + '" y1="' + y + '" y2="' + y + '"/>');
+  });
+  svg.push('</g><g class="axis">');
+  ticks.forEach(function (t) {
+    var y = PADT + (1 - t / maxW) * (H - PADT - PADB);
+    svg.push('<text x="0" y="' + (y + 4) + '">' + t + 'w</text>');
+  });
+  svg.push('<text x="' + PADL + '" y="' + (H - 6) + '">' + y0 + '</text>');
+  svg.push('<text x="' + (W - 28) + '" y="' + (H - 6) + '">' + y1 + '</text>');
+  svg.push('</g>');
+
+  rows.forEach(function (d, i) {
+    var h = d.weeks / maxW * (H - PADT - PADB);
+    svg.push('<rect class="bar" data-i="' + i + '" x="' + (PADL + i * bw) + '" y="' +
+      (H - PADB - h) + '" width="' + Math.max(bw - 1.5, 1) + '" height="' + h + '">' +
+      '<title>' + d.year + ' — ' + d.film + ', ' + d.weeks + ' weeks</title></rect>');
+  });
+  svg.push('</svg>');
+  root.innerHTML = '<div class="chart">' + svg.join('') + '</div>';
+
+  var first = rows[0], last = rows[rows.length - 1];
+  readout.innerHTML = 'From <b>' + first.weeks + ' weeks</b> in ' + first.year +
+    ' to <b>' + last.weeks + ' weeks</b> in ' + last.year + '. Hover or tap a bar for the film.';
+
+  root.addEventListener('click', function (e) {
+    var b = e.target.closest('.bar');
+    if (!b) return;
+    var d = rows[+b.dataset.i];
+    Array.prototype.forEach.call(root.querySelectorAll('.bar'), function (x) { x.classList.remove('sel'); });
+    b.classList.add('sel');
+    readout.innerHTML = '<b>' + d.year + '</b> — ' + d.film + ' stayed in cinemas for <b>' +
+      d.weeks + ' weeks</b>.';
+  });
+}
+</script>
+<script src="/widgets/_autosize.js"></script>
+</body>
+</html>
