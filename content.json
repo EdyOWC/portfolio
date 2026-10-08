@@ -327,71 +327,28 @@
       "cover": "assets/img/owc-cover.jpg",
       "blocks": [
         {
-          "type": "lede",
-          "body": "What if we could solve the global environmental crisis by radically changing our lifestyle?"
-        },
-        {
-          "type": "text",
-          "body": "One World City (OWC) is a trans-platform experience demonstrating a unique situation: the global population moves to one city, reducing the footprint of mankind to a limited, ultra-comfortable space."
-        },
-        {
-          "type": "list",
-          "ordered": true,
-          "items": [
-            "Commercial for the real estate project",
-            "TV sitcom",
-            "Tablet app for writing songs with generative AI",
-            "VR experience",
-            "All of the above in an exhibition space"
-          ]
-        },
-        {
-          "type": "embed",
-          "src": "https://www-ccv.adobe.io/v1/player/ccv/RxEzppYxu86/embed?bgcolor=%23191919&lazyLoading=true&api_key=BehancePro2View",
-          "title": "One World City — first VR demo",
-          "ratio": "16/9",
-          "caption": "First VR demo.",
-          "note": "Adobe-hosted video. Re-host before cancelling the Adobe plan."
-        },
-        {
-          "type": "gallery",
-          "images": [
-            {
-              "src": "assets/img/owc-01.jpg",
-              "alt": "Initial blocking for the apartment model in Miro",
-              "caption": "Initial blocking for the apartment model in Miro"
-            },
-            {
-              "src": "assets/img/owc-02.jpg",
-              "alt": "Narrative timeline from 2020 to 2100",
-              "caption": "Narrative timeline: from 2020 to 2100"
-            },
-            {
-              "src": "assets/img/owc-03.jpg",
-              "alt": "User flow through the experience space",
-              "caption": "User’s flow in the experience space — from entry to end"
-            },
-            {
-              "src": "assets/img/owc-04.jpg",
-              "alt": "User flow explaining the narrative",
-              "caption": "User flow — explaining the narrative"
-            }
-          ]
-        },
-        {
           "type": "credits",
           "rows": [
             [
-              "Tools",
-              "Unity, generative AI tools, Meta Quest, Miro"
+              "Programme",
+              "M.F.A. Digital Media, Steve Tisch School of Film and Television, Tel Aviv University"
             ],
             [
-              "Context",
-              "M.F.A. final project, Tel Aviv University"
+              "Platforms",
+              "Commercial, TV sitcom, generative-AI songwriting app, VR experience, exhibition space"
+            ],
+            [
+              "Tools",
+              "Unity, generative AI tools, Meta Quest, Miro"
             ]
           ]
+        },
+        {
+          "type": "todo",
+          "body": "Two things on this page still need you. Five images are referenced (owc-01 to owc-05) and nothing was placed automatically, because the PowerPoint is a research deck and most of its pictures are other people's. And the VR demo above is hosted on Adobe's servers — re-upload it to YouTube and switch the block to @youtube before you cancel the subscription."
         }
-      ]
+      ],
+      "text": "one-world-city"
     },
     {
       "slug": "exodus",
@@ -406,10 +363,6 @@
       "description": "An open-world PC game that lets us talk with the Israelites before crossing the Red Sea. Our mission is to find Moses’ staff by exposing the undocumented stories of the subaltern people. Made with Unity.",
       "cover": "assets/img/exodus-cover.jpg",
       "blocks": [
-        {
-          "type": "text",
-          "body": "Exodus is an open-world PC game that lets us talk with the Israelites before crossing the Red Sea. Our mission is to find Moses’ staff by exposing the undocumented stories of the subaltern people. Made with Unity."
-        },
         {
           "type": "credits",
           "rows": [
@@ -428,34 +381,19 @@
             [
               "Voices",
               "Replica"
+            ],
+            [
+              "Engine",
+              "Unity"
             ]
           ]
         },
         {
-          "type": "embed",
-          "src": "https://www-ccv.adobe.io/v1/player/ccv/4sfjw43Stj9/embed?bgcolor=%23191919&lazyLoading=true&api_key=BehancePro2View",
-          "title": "Exodus — gameplay",
-          "ratio": "16/9",
-          "note": "Adobe-hosted video. Re-host before cancelling the Adobe plan."
-        },
-        {
-          "type": "gallery",
-          "images": [
-            {
-              "src": "assets/img/exodus-01.jpg",
-              "alt": "Exodus — environment"
-            },
-            {
-              "src": "assets/img/exodus-02.jpg",
-              "alt": "Exodus — NPC conversation"
-            },
-            {
-              "src": "assets/img/exodus-03.jpg",
-              "alt": "Exodus — desert scene"
-            }
-          ]
+          "type": "todo",
+          "body": "Two things on this page still need you. Five images are referenced (exodus-01 to exodus-05); Adobe's CDN is unreachable from the build, so they need uploading. And all three videos above are hosted on Adobe's servers — re-upload them to YouTube and switch the blocks to @youtube before you cancel."
         }
-      ]
+      ],
+      "text": "exodus"
     },
     {
       "slug": "mvp",
