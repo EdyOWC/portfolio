@@ -39,6 +39,16 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
 
+/* The ground: warm paper with a faint tooth, so large empty areas read as
+   material rather than as a blank div. */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(1100px 620px at 78% -8%, rgba(140,34,48,.055), transparent 62%),
+    radial-gradient(900px 560px at 2% 102%, rgba(21,85,90,.05), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(18,19,22,.016) 0 1px, transparent 1px 3px);
+}
+
 body {
   margin: 0; background: var(--paper); color: var(--ink);
   font-family: var(--serif); font-size: var(--step-0); line-height: 1.66;
@@ -76,11 +86,23 @@ a { color: inherit; }
 /* ---------- hero: the work plays immediately ---------- */
 
 .hero { position: relative; background: var(--stage); border-bottom: 1px solid var(--ink); }
-.hero__stage { position: relative; height: clamp(380px, 76vh, 760px); overflow: hidden; }
-.hero__stage iframe { width: 100%; height: 100%; border: 0; }
+.hero__stage { position: relative; height: clamp(360px, 62vh, 620px); overflow: hidden; }
+.hero__stage img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
+.hero__stage::after {
+  content: ""; position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,.10) 0 1px, transparent 1px 3px);
+  pointer-events: none;
+}
+/* The still often carries its own typography, so the copy side is darkened
+   hard enough that the headline always wins. */
 .hero__veil {
   position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(to top, rgba(10,11,13,.90) 0, rgba(10,11,13,.40) 26%, rgba(10,11,13,0) 55%);
+  background:
+    linear-gradient(to right, rgba(10,11,13,.92) 0, rgba(10,11,13,.72) 38%, rgba(10,11,13,.18) 72%, rgba(10,11,13,.30) 100%),
+    linear-gradient(to top, rgba(10,11,13,.80) 0, rgba(10,11,13,.20) 42%, rgba(10,11,13,0) 70%);
+}
+@media (max-width: 760px) {
+  .hero__veil { background: linear-gradient(to top, rgba(10,11,13,.92) 0, rgba(10,11,13,.62) 45%, rgba(10,11,13,.35) 100%); }
 }
 .hero__copy { position: absolute; inset-inline: 0; bottom: 0; padding-bottom: clamp(1.2rem, 3vw, 2.6rem); }
 .hero__copy > .wrap > * { pointer-events: auto; }
@@ -207,7 +229,7 @@ a { color: inherit; }
 .opener .gate { margin: 0; }
 .opener .gate__frame { border: 0; }
 .opener .gate__cap, .opener .gate__note { padding-bottom: .9rem; color: #8C939B; }
-.opener .gate .gate__stage { aspect-ratio: 16 / 9; max-height: 62vh; }
+.opener .gate .gate__stage { aspect-ratio: 16 / 9; max-height: 56vh; }
 @media (max-width: 760px) { .opener .gate .gate__stage { aspect-ratio: 4 / 3; max-height: none; } }
 
 .article { padding-bottom: clamp(3rem, 8vw, 6rem); max-width: 1000px; }
@@ -276,6 +298,35 @@ figcaption { font-size: var(--step--1); color: var(--ink-3); margin-top: .5rem; 
 .gate--tall .gate__stage { aspect-ratio: 4 / 3; }
 .gate--square .gate__stage { aspect-ratio: 1 / 1; }
 .gate__stage iframe, .gate__stage video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* Click-to-open plate. Shows a still when there is one, the project's colour
+   when there is not, and never loads anything until pressed. */
+.gate__open {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .5rem; cursor: pointer; border: 0; color: #FBFAF7;
+  font: inherit; font-family: var(--serif);
+  background-color: var(--stage); background-size: cover; background-position: center;
+}
+.gate__open::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,11,13,.86), rgba(10,11,13,.42));
+  transition: background .3s;
+}
+.gate__open:hover::after { background: linear-gradient(to top, rgba(10,11,13,.78), rgba(10,11,13,.28)); }
+.gate__glyph {
+  position: relative; width: 3.1rem; height: 3.1rem; border-radius: 50%;
+  border: 1px solid rgba(251,250,247,.55); display: grid; place-items: center;
+  transition: border-color .25s, transform .25s;
+}
+.gate__glyph::before {
+  content: ""; width: 0; height: 0; margin-left: .22rem;
+  border-left: .72rem solid currentColor;
+  border-top: .46rem solid transparent; border-bottom: .46rem solid transparent;
+}
+.gate__open:hover .gate__glyph { border-color: #fff; transform: scale(1.06); }
+.gate__label { position: relative; font-size: var(--step-1); font-weight: 300; max-width: 24ch; text-align: center; line-height: 1.2; }
+.gate__host { position: relative; font-size: var(--step--2); opacity: .66; }
 .gate__stage:fullscreen { aspect-ratio: auto; height: 100%; }
 
 .gate__bar { display: flex; align-items: center; gap: .8rem; padding: .4rem .7rem; border-top: 1px solid #2A2D32; font-size: var(--step--2); color: #8C939B; }

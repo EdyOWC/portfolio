@@ -6,22 +6,22 @@
     "origin": "https://odedstrauss.com",
     "lang": "en",
     "description": "Interactive media by Oded Y. Strauss, Tel Aviv. WebXR, virtual tours, VR installations and data-driven storytelling for cultural and civic projects.",
-    "email": "hello@odedstrauss.com",
+    "email": "odedstr95@gmail.com",
     "location": "Tel Aviv, Israel",
     "ogImage": "assets/img/og-default.jpg",
     "epigraph": "“The limit does not exist.” — Cady Heron",
     "social": [
       {
         "label": "LinkedIn",
-        "href": "https://www.linkedin.com/"
+        "href": ""
       },
       {
-        "label": "Behance",
-        "href": "https://www.behance.net/"
+        "label": "Instagram",
+        "href": ""
       },
       {
         "label": "YouTube",
-        "href": "https://www.youtube.com/"
+        "href": ""
       }
     ],
     "nav": [
@@ -70,8 +70,9 @@
       "heroEmbed": {
         "src": "https://dzc-demo.odedstrauss.com/",
         "title": "Dizengoff Center — 360° virtual tour demo",
-        "caption": "Dizengoff Center, Tel Aviv. Twenty-five panoramas from one entrance to Lev Cinema. Drag to look around.",
-        "href": "/dizengoff-center-virtual-tour-demo"
+        "caption": "Dizengoff Center, Tel Aviv — twenty-five panoramas, one entrance to Lev Cinema.",
+        "href": "/dizengoff-center-virtual-tour-demo",
+        "poster": "assets/img/dizengoff-cover.jpg"
       }
     },
     "sections_blurb": {},
@@ -229,24 +230,41 @@
           "type": "credits",
           "rows": [
             [
-              "Programme",
-              "M.F.A. Digital Media, Steve Tisch School of Film and Television, TAU"
+              "Creator",
+              "Oded Yaniv Strauss"
             ],
             [
-              "Support",
-              "Blavatnik Foundation"
+              "Executive producers",
+              "Prof. Yaron Bloch, Ehud Ben Arie"
             ],
             [
-              "Voice",
+              "Producer",
+              "Ofra Strauss"
+            ],
+            [
+              "Technical advisor",
+              "Shaked Regev"
+            ],
+            [
+              "Narration",
               "Dan Kaner"
             ],
             [
-              "Engine",
-              "Unity"
+              "Graphic design",
+              "Lilian Abu Hadba, Mounayer, Iris Fainberg"
+            ],
+            [
+              "Support",
+              "Blavatnik Student Film Production Fund"
+            ],
+            [
+              "Programme",
+              "M.F.A. Digital Media, Steve Tisch School of Film and Television, TAU"
             ]
           ]
         }
-      ]
+      ],
+      "credits_tagline": "When we leave, a void remains"
     },
     {
       "slug": "past-events",

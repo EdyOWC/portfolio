@@ -110,7 +110,7 @@ function tile(p, { tall = false } = {}) {
      loads and falls back to the typographic cover when it does not, so the
      grid is never full of grey rectangles. */
   const typed = `<span class="tile__type"${he}><span class="n">${esc((p.tags || [])[0] || p.year || '')}</span><h3>${esc(p.title)}</h3></span>`;
-  const photo = p.cover
+  const photo = (p.hasCover !== false && p.cover)
     ? `<img src="${u(p.cover)}" alt="" loading="lazy" onerror="this.remove()">
        <span class="tile__over"><h3${he}>${esc(p.title)}</h3></span>`
     : '';
@@ -144,13 +144,19 @@ function filters(pages) {
 
 /* ---------- blocks ---------- */
 
-function gate({ src, title, ratio, tall, caption, note, kind }, extra = '') {
+function gate({ src, title, ratio, tall, caption, note, kind, poster }, extra = '') {
   const shape = tall ? ' gate--tall' : (ratio === '1/1' ? ' gate--square' : '');
+  /* Nothing loads until asked. An embedded site that appears unbidden reads as
+     a page inside a page; behind a deliberate click it reads as a thing you
+     opened. The iframe is written by site.js on first click. */
   return `<div class="gate${shape}${extra}">
-  <div class="gate__frame">
+  <div class="gate__frame" data-embed="${esc(src)}" data-title="${esc(title || '')}">
     <div class="gate__stage">
-      <iframe src="${esc(src)}" title="${esc(title || 'Embedded experience')}" loading="lazy"
-              allow="${IFRAME_ALLOW}" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <button class="gate__open" type="button"${poster ? ` style="background-image:url(${esc(u(poster))})"` : ''}>
+        <span class="gate__glyph" aria-hidden="true"></span>
+        <span class="gate__label">${esc(title || 'Open this')}</span>
+        <span class="gate__host">${esc(kind || host(src))}</span>
+      </button>
     </div>
     <div class="gate__bar">
       <span class="gate__src">${esc(kind || host(src))}</span>
@@ -202,7 +208,7 @@ function block(b, page) {
         b.caption ? `<p class="gate__cap">${inline(b.caption)}</p>` : ''}</div>`;
 
     case 'youtube':
-      return gate({ src: `https://www.youtube-nocookie.com/embed/${b.id}`, title: b.title, caption: b.caption, kind: 'YouTube' });
+      return gate({ src: `https://www.youtube-nocookie.com/embed/${b.id}?autoplay=1`, title: b.title, caption: b.caption, kind: 'YouTube', poster: `https://i.ytimg.com/vi/${b.id}/maxresdefault.jpg` });
 
     case 'vimeo':
       return gate({ src: `https://player.vimeo.com/video/${b.id}`, title: b.title, caption: b.caption, kind: 'Vimeo' });
@@ -466,6 +472,14 @@ function renderSection(data, section) {
 function renderHome(data) {
   const s = data.site;
   const h = s.home;
+  /* The hero shows a real still. Pick the newest work that has one, so the
+     page is never a black rectangle waiting for an upload. */
+  const shot = data.pages
+    .filter(p => p.section === 'work' && p.hasCover !== false && p.cover)
+    .sort((a, b) => String(b.year || '').localeCompare(String(a.year || '')))[0];
+  const hero = shot
+    ? { poster: shot.cover, href: '/' + shot.slug, caption: `${shot.title}, ${shot.year}` }
+    : { poster: h.heroEmbed.poster, href: h.heroEmbed.href, caption: h.heroEmbed.caption };
   const work = data.pages.filter(p => p.section === 'work').sort(byYear);
   const lab = data.pages.filter(p => p.section === 'lab').sort(byYear);
   const diaries = data.pages.filter(p => p.section === 'diaries').sort(byYear).slice(0, 6);
@@ -477,14 +491,13 @@ function renderHome(data) {
     `<main id="main">
   <section class="hero">
     <div class="hero__stage">
-      <iframe src="${esc(h.heroEmbed.src)}" title="${esc(h.heroEmbed.title)}" loading="eager"
-              allow="${IFRAME_ALLOW}" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      ${hero.poster ? `<img src="${u(hero.poster)}" alt="" onerror="this.remove()">` : ''}
       <div class="hero__veil"></div>
     </div>
     <div class="hero__copy"><div class="wrap">
       <h1>${esc(h.headline)}</h1>
       <p class="hero__sub">${inline(h.statement)}</p>
-      <a class="hero__now" href="${esc(h.heroEmbed.href)}"><span class="dot"></span>${esc(h.heroEmbed.caption)}</a>
+      <a class="hero__now" href="${u(hero.href)}"><span class="dot"></span>${esc(hero.caption)}</a>
     </div></div>
   </section>
 

@@ -21,6 +21,12 @@ hydrate(data, texts);
 // '/portfolio' on the github.io project URL.
 setBase(process.env.BASE_PATH || data.site.basePath || '');
 
+// Which referenced images actually exist? Knowing lets the templates pick a
+// real photograph for the hero and skip <img> tags that would 404.
+const has = (rel) => !!rel && existsSync(join(root, 'static', rel.replace(/^\//, '')));
+data.pages.forEach(p => { p.hasCover = has(p.cover); });
+data.site.assetExists = has;
+
 if (existsSync(dist)) rmSync(dist, { recursive: true });
 mkdirSync(dist, { recursive: true });
 

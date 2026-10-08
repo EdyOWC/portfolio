@@ -12,6 +12,8 @@ If the virtual lighter has physical boundaries — a collider — we can grab it
 
 The sound matters too. Every lighter trigger makes a click at the start of the ignition, like a tiny explosion, followed by the woosh of the burn. As long as we hold the trigger that sound continues. Getting that right needs a script that separates the ignition sound from the burn.
 
+@image assets/img/memory-room-lighter-sfx.png | Two sound events, not one: the click at the moment of ignition, then the burn looping for as long as the trigger is held.
+
 Then there is putting it out. "How do we do it in real life?" is the question that led to the solution: if we are close enough and make a sound loud enough — at least a blow of air — the flame object is disabled. VR headsets now carry microphones that detect volume. With a more complex script you can detect not only proximity and loudness but the type of sound, excluding ordinary speech and prioritising an exhalation.
 
 ## 2. Notes, the will and others — grab to change the environment

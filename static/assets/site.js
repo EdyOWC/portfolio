@@ -4,10 +4,34 @@
 (function () {
   'use strict';
 
+  /* ---- embeds: load only when asked ---- */
+  function openEmbed(frameEl) {
+    if (frameEl.dataset.loaded) return frameEl.querySelector('iframe');
+    var stage = frameEl.querySelector('.gate__stage');
+    var f = document.createElement('iframe');
+    f.src = frameEl.dataset.embed;
+    f.title = frameEl.dataset.title || 'Embedded experience';
+    f.setAttribute('allow', 'accelerometer; autoplay; camera; clipboard-write; encrypted-media; fullscreen; gyroscope; magnetometer; microphone; picture-in-picture; xr-spatial-tracking');
+    f.setAttribute('allowfullscreen', '');
+    f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    stage.innerHTML = '';
+    stage.appendChild(f);
+    frameEl.dataset.loaded = '1';
+    return f;
+  }
+
+  document.addEventListener('click', function (e) {
+    var open = e.target.closest('.gate__open');
+    if (!open) return;
+    openEmbed(open.closest('.gate__frame'));
+  });
+
   /* ---- embeds: full screen ---- */
   document.addEventListener('click', function (e) {
     var btn = e.target.closest('[data-fullscreen]');
     if (!btn) return;
+    var frameEl = btn.closest('.gate__frame');
+    if (frameEl && !frameEl.dataset.loaded) openEmbed(frameEl);
     var stage = btn.closest('.gate').querySelector('.gate__stage');
     if (!stage) return;
     if (document.fullscreenElement) { document.exitFullscreen(); return; }
