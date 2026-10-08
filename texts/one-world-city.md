@@ -24,10 +24,6 @@ Are you ready to see what the future holds?
 
 @image assets/img/owc-02.png | Narrative Timeline: from 2020 to 2100
 
-@image assets/img/owc-03.png | User Flow- explaining the narrative
+@pair assets/img/owc-04.png | User's flow in the experience space- from entry to end || assets/img/owc-03.png | User Flow- explaining the narrative
 
-@image assets/img/owc-04.png | User's flow in the experience space- from entry to end
-
-@image assets/img/owc-05.png | References
-
-@image assets/img/owc-06.png | Mood board
+@pair assets/img/owc-06.png | Mood board || assets/img/owc-05.png | References

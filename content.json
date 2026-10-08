@@ -324,7 +324,7 @@
         "Speculative"
       ],
       "description": "A trans-platform experience: the global population moves to one city, reducing the footprint of mankind to a limited, ultra-comfortable space.",
-      "cover": "assets/img/owc-04.png",
+      "cover": "assets/img/owc-cover.png",
       "blocks": [
         {
           "type": "credits",

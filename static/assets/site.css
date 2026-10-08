@@ -424,13 +424,14 @@ body[data-theme="teal"]::before {
 }
 body[data-theme="teal"]::after {
   content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-  opacity: .22;
-  background-image:
-    repeating-linear-gradient(90deg, rgba(243,252,253,.5) 0 1px, transparent 1px 26px),
-    repeating-linear-gradient(0deg, rgba(243,252,253,.5) 0 1px, transparent 1px 26px);
-  -webkit-mask-image: linear-gradient(90deg, #000 0, transparent 13%, transparent 87%, #000 100%);
-          mask-image: linear-gradient(90deg, #000 0, transparent 13%, transparent 87%, #000 100%);
+  opacity: .5;
+  background-image: url("/assets/circuit-left.svg"), url("/assets/circuit-right.svg");
+  background-position: left top, right top;
+  background-repeat: repeat-y, repeat-y;
+  background-size: 190px 620px, 190px 620px;
 }
+@media (max-width: 1100px) { body[data-theme="teal"]::after { opacity: .3; } }
+@media (max-width: 760px) { body[data-theme="teal"]::after { background-size: 120px 400px, 120px 400px; opacity: .22; } }
 
 /* White bar across the top, as on the original */
 body[data-theme="teal"] .mast {
@@ -493,3 +494,9 @@ body[data-theme="teal"] .related { border-top-color: var(--rule); }
 body[data-theme="teal"] .foot { border-top-color: var(--rule); }
 body[data-theme="teal"] .foot a:hover, body[data-theme="teal"] .related a:hover { color: var(--mark); }
 body[data-theme="teal"] ::selection { background: var(--mark); color: #06202C; }
+
+/* Two process documents that belong side by side, as they were laid out
+   in the deck. They stack on a narrow screen. */
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(.7rem, 2vw, 1.3rem); align-items: start; }
+.pair .shot { margin: 0; }
+@media (max-width: 760px) { .pair { grid-template-columns: 1fr; } }

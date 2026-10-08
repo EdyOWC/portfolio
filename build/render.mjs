@@ -149,6 +149,11 @@ function block(b, page) {
       return `<figure class="shot"><img src="${u(b.src)}" alt="${esc(b.alt || '')}" loading="lazy" onerror="this.closest('figure').remove()">${
         b.caption ? `<figcaption${isHe(b.caption) ? ' dir="rtl"' : ''}>${inline(b.caption)}</figcaption>` : ''}</figure>`;
 
+    case 'pair':
+      return `<div class="pair">${b.images.map(im =>
+        `<figure class="shot"><img src="${u(im.src)}" alt="${esc(im.caption || '')}" loading="lazy" onerror="this.closest('figure').remove()">${
+          im.caption ? `<figcaption${isHe(im.caption) ? ' dir="rtl"' : ''}>${inline(im.caption)}</figcaption>` : ''}</figure>`).join('')}</div>`;
+
     case 'gallery':
       return `<div class="gallery" data-cols="${b.columns || 2}">${b.images.map(im =>
         `<img src="${u(im.src)}" alt="${esc(im.alt || '')}" loading="lazy" onerror="this.remove()">`).join('')}</div>`;
@@ -207,6 +212,14 @@ export function parseText(md, lang) {
     const dir = rtl ? 'rtl' : undefined;
 
     let m;
+    if (c.startsWith('@pair ')) {
+      const parts = c.slice(6).split('||').map(x => x.trim()).filter(Boolean);
+      blocks.push({ type: 'pair', images: parts.map(x => {
+        const [src, cap] = x.split('|').map(y => y.trim());
+        return { src, caption: cap || '' };
+      }) });
+      continue;
+    }
     if ((m = c.match(/^@(embed|youtube|vimeo|image|widget)\s+(\S+)\s*(?:\|\s*([\s\S]+))?$/))) {
       const [, kind, ref, caption] = m;
       if (kind === 'embed') blocks.push({ type: 'embed', src: ref, title: caption || '', caption, tall: true });
@@ -355,7 +368,7 @@ function facts(data, page) {
 }
 
 /* Media and galleries break out of the text measure; prose stays narrow. */
-const WIDE = new Set(['embed', 'html', 'youtube', 'vimeo', 'video', 'gallery', 'image', 'widget']);
+const WIDE = new Set(['embed', 'html', 'youtube', 'vimeo', 'video', 'gallery', 'image', 'widget', 'pair']);
 
 export function renderPage(data, page) {
   const s = data.site;
