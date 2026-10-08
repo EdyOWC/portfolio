@@ -342,10 +342,6 @@
               "Unity, generative AI tools, Meta Quest, Miro"
             ]
           ]
-        },
-        {
-          "type": "todo",
-          "body": "The VR demo above is hosted on Adobe's servers. Re-upload it to YouTube and change the @embed line in texts/one-world-city.md to @youtube before you cancel the subscription."
         }
       ],
       "text": "one-world-city",

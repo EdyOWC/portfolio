@@ -16,7 +16,7 @@ Are you ready to see what the future holds?
 
 ## First VR demo
 
-@embed https://www-ccv.adobe.io/v1/player/ccv/RxEzppYxu86/embed?bgcolor=%23191919&lazyLoading=true&api_key=BehancePro2View | The first walkthrough of the apartment.
+@youtube xj_NMsrYR-k | The first walkthrough of the apartment.
 
 ## Designing it
 

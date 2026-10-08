@@ -202,7 +202,7 @@ function block(b, page) {
 
     case 'pair':
       return `<div class="pair">${b.images.map(im =>
-        `<figure class="shot"><img src="${u(im.src)}" alt="${esc(im.caption || '')}" loading="lazy" onerror="this.closest('figure').remove()">${
+        `<figure><img src="${u(im.src)}" alt="${esc(im.caption || '')}" loading="lazy" onerror="this.closest('figure').remove()">${
           im.caption ? `<figcaption${isHe(im.caption) ? ' dir="rtl"' : ''}>${inline(im.caption)}</figcaption>` : ''}</figure>`).join('')}</div>`;
 
     case 'gallery':
