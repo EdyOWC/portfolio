@@ -26,6 +26,8 @@ A pause. In my first year at university a student made an interactive film using
 
 So there must be a reason the magic works. I got hold of the scene and went through the two shots of the trick frame by frame, counting which cards appear on screen.
 
+@image assets/img/card-frame-table.png | The count itself: every card visible in each frame of the two shots, tallied by hand.
+
 @widget card-frames | Every card visible in the forty-one frames of the trick, counted by hand. Tap a card to isolate it.
 
 Watching it the first time you do not notice, but the seven of diamonds is present in twenty-nine per cent of the frames, more than any other card. In total that is only twelve frames out of forty-one. The whole film runs to around a hundred and seventy thousand frames, so twelve is nothing. Those twelve frames make the difference, and they are enough to plant that card — that thought, some would say — in our minds. We look at the logos of real companies in films for considerably longer than twelve frames. That may be enough to make us think a film is artistic while it advertises.

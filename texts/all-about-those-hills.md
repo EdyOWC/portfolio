@@ -10,6 +10,8 @@
 
 כדי לכתוב את הטקסט הזה, נזכרתי בסביבות הראשונות של מגוון משחקים — Rayman, ‏Heroes of Might and Magic 4, ‏Maplestory, ‏World of Warcraft, ‏Red Dead Redemption 2. אליהם חבר הוסיף גם את The Witcher 3: Wild Hunt. הם משתייכים לז'אנרים שונים: side scroller, ‏4X, ‏open world.
 
+@image assets/img/diary-all-about-those-hills.png | הסביבות הפותחות של Rayman, ‏Heroes of Might and Magic 4, ‏Maplestory, ‏World of Warcraft, ‏Red Dead Redemption 2 ו‑The Witcher 3.
+
 ## גבעות בלתי מזיקות
 
 מצאתי שיש מכנה משותף לכל אלה. כולם מציגים סביבה של גבעות בלתי מזיקות, מקום שקל להגיע בהן ממקום למקום, ומזג אוויר נינוח. בניגוד למצוקים מדבריים, ערבות קפואות נטולות חיים או ביצות מסתוריות, הסביבה הזו מושכת אותנו, חומלת על טעויות, מאפשרת להביט הרחק ולחקור את תכולתה. היא גילום ויזואלי של הצורך שלנו להתחלה פשוטה, מבלי לקחת את תשומת הלב מיתר התחומים שיש לנו ללמוד — אינטראקציה, עלילה וכו'.

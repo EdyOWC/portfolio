@@ -334,7 +334,8 @@ function entryFor(data, p) {
 
 function listing(data, section, pages) {
   if (section.layout === 'list') return `<div class="entries">${pages.map(p => entryFor(data, p)).join('\n')}</div>`;
-  const cols = section.layout === 'grid' ? 'grid--3' : 'grid--2';
+  const cols = section.layout === 'poster' ? 'grid--poster'
+             : section.layout === 'grid' ? 'grid--3' : 'grid--2';
   return `<div class="grid ${cols}" data-grid>${pages.map(p => tile(p)).join('\n')}</div>`;
 }
 
@@ -456,7 +457,7 @@ export function renderHome(data) {
   <div class="wrap">
     <section class="band">
       <div class="band__head"><h2>Works</h2><a href="${u('work')}">All ${work.length} works</a></div>
-      <div class="grid grid--2">${work.slice(0, 6).map(p => tile(p)).join('\n')}</div>
+      <div class="grid grid--poster">${work.slice(0, 6).map(p => tile(p)).join('\n')}</div>
     </section>
 
     <section class="band">

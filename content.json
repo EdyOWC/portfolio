@@ -86,7 +86,7 @@
       "title": "Works",
       "heading": "Works",
       "intro": "Interactive and cinematic projects, newest first. Most of them are meant to be entered rather than watched.",
-      "layout": "register"
+      "layout": "poster"
     },
     {
       "id": "diaries",
@@ -94,7 +94,7 @@
       "title": "Media Diaries",
       "heading": "Media Diaries",
       "intro": "I studied digital media and film. These are notes on projects, events, data and the state of the industry — some in English, some in Hebrew.",
-      "layout": "grid"
+      "layout": "poster"
     },
     {
       "id": "lab",
@@ -1114,7 +1114,7 @@
           "body": "Paste the text from the original page here. Worth renaming this slug to something readable and adding a redirect from the old one."
         }
       ],
-      "cover": "assets/img/diary-169c575dd48513.jpg"
+      "cover": "assets/img/diary-169c575dd48513.png"
     },
     {
       "slug": "hot-2026",
@@ -1130,7 +1130,7 @@
         "תעשייה",
         "אירוע"
       ],
-      "cover": "assets/img/diary-hot-2026.jpg"
+      "cover": "assets/img/diary-hot-2026.png"
     },
     {
       "slug": "pureimage",
@@ -1146,7 +1146,7 @@
           "body": "העתק לכאן את הטקסט מ-odedstrauss.com/pureimage"
         }
       ],
-      "cover": "assets/img/diary-pureimage.jpg"
+      "cover": "assets/img/diary-pureimage.png"
     },
     {
       "slug": "memory-room",
@@ -1177,7 +1177,7 @@
           "body": "העתק לכאן את הטקסט מהעמוד המקורי."
         }
       ],
-      "cover": "assets/img/diary-multimedia-auschwitz-lfgiohio.jpg"
+      "cover": "assets/img/diary-multimedia-auschwitz-lfgiohio.png"
     },
     {
       "slug": "jaguar-411-the-secrets-of-ar",
@@ -1206,7 +1206,7 @@
           "body": "Paste the text from the original page here."
         }
       ],
-      "cover": "assets/img/diary-information-and-media-it-sounds-better-in-hebrew.jpg"
+      "cover": "assets/img/diary-information-and-media-it-sounds-better-in-hebrew.png"
     },
     {
       "slug": "1022-films",
@@ -1237,7 +1237,7 @@
         "נוף",
         "עיצוב עולם"
       ],
-      "cover": "assets/img/diary-all-about-those-hills.jpg"
+      "cover": "assets/img/diary-all-about-those-hills.png"
     },
     {
       "slug": "crafting-cinematic-magic",
