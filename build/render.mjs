@@ -249,7 +249,7 @@ export function hydrate(data, texts) {
 
 /* ---------- chrome ---------- */
 
-function head(data, { title, description, path, image, lang }) {
+function head(data, { title, description, path, image, lang, theme }) {
   const s = data.site;
   const url = s.origin + (path === 'index.html' ? '/' : '/' + path.replace(/\/index\.html$/, ''));
   const og = s.origin + '/' + (image || s.ogImage).replace(/^\//, '');
@@ -276,7 +276,7 @@ function head(data, { title, description, path, image, lang }) {
 <link rel="icon" href="${u('assets/favicon.svg')}" type="image/svg+xml">
 <script defer src="${u('assets/site.js')}"></script>
 </head>
-<body>
+<body${theme ? ` data-theme="${esc(theme)}"` : ''}>
 <a class="skip" href="#main">Skip to content</a>`;
 }
 
@@ -365,7 +365,10 @@ export function renderPage(data, page) {
   /* Lead with the work. The first thing that plays is pulled above the title
      and given the full width of the page; the rest stays in reading order. */
   const blocks = page.blocks || [];
-  const first = blocks.findIndex(b => ['embed', 'html', 'youtube', 'vimeo', 'video'].includes(b.type));
+  /* Some pages want the title first and the demo in its own section, the way
+     the original was built. Those set "opener": false. */
+  const first = page.opener === false ? -1
+    : blocks.findIndex(b => ['embed', 'html', 'youtube', 'vimeo', 'video'].includes(b.type));
   const opener = first > -1 ? blocks[first] : null;
   const rest = first > -1 ? blocks.filter((_, i) => i !== first) : blocks;
 
@@ -375,7 +378,8 @@ export function renderPage(data, page) {
       description: page.description || s.description,
       path: `${page.slug}/index.html`,
       image: page.cover,
-      lang: page.lang || s.lang
+      lang: page.lang || s.lang,
+      theme: page.theme
     }),
     mast(data, section ? '/' + section.slug : '/'),
     `<main id="main">

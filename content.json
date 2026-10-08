@@ -348,7 +348,9 @@
           "body": "Two things on this page still need you. Five images are referenced (owc-01 to owc-05) and nothing was placed automatically, because the PowerPoint is a research deck and most of its pictures are other people's. And the VR demo above is hosted on Adobe's servers — re-upload it to YouTube and switch the block to @youtube before you cancel the subscription."
         }
       ],
-      "text": "one-world-city"
+      "text": "one-world-city",
+      "theme": "teal",
+      "opener": false
     },
     {
       "slug": "exodus",
